@@ -1,0 +1,6 @@
+.idea
+/app/.env
+/app/vendor/
+/app/var/
+/app/tests/
+/docker/database/data/
