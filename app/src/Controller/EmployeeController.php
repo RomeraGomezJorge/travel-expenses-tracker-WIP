@@ -53,10 +53,11 @@
       return $this->render(self::TEMPLATES_FOLDER . TwigFileNameConstants::INDEX,
         [
           'pagination' => $pagination,
-          'page_title' => 'Employees',
+          'page_title' => 'Employee',
           'index_path' => self::INDEX_PATH,
           'new_path' => self::NEW_PATH,
           'edit_path' => self::EDIT_PATH,
+          'delete_path' => self::DELETE_PATH,
           'form_filter' => $form->createView(),
         ]);
     }

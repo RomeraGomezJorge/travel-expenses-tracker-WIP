@@ -1,6 +1,6 @@
 {% extends 'backoffice/list_items_base.html.twig' %}
-{% block title %} {{ 'List'|trans }} {{ sectionTtile }} {% endblock %}
-{% block page_title %} {{ sectionTtile }} {% endblock  page_title %}
+{% block title %}  {{ section_title }} {% endblock %}
+{% block page_title %} {{ section_title }} {% endblock  page_title %}
 {% block table %}
     <table id="add-row"
            class="display table table-striped table-hover dataTable"
@@ -24,12 +24,12 @@
         </thead>
         <tbody>
         {% for employee in pagination %}
-            <tr role="row" class="odd" id="css-selector-for-tr-that_contains-items-to-delete-{{ employee.id }}">
+            <tr role="row" class="odd" >
                 <td class=" d-table-cell d-sm-none cursor-pointer"
                     data-toggle="modal"
                     data-target="#mobile-actions-modal"
                     data-edit_path="{{ path(edit_path, {'employee': employee.id}) }}"
-                    data-form_action_attribute_to_delete="{{ path('employee_delete', {'employee': employee.id}) }}"
+                    data-form_action_attribute_to_delete="{{ path(delete_path, {'employee': employee.id}) }}"
                     data-confirmation_message_to_delete='{{ 'The employee "%surnname%",  "%name%".'|trans({'%surname%': employee.surname,'%name%': employee.name}) }}'
                     data-modal_title='{{ employee.name }}'
                 >
@@ -67,7 +67,7 @@
                                 class="btn btn-link btn-danger delete"
                                 data-toggle="modal"
                                 data-target="#delete-confirmation-modal"
-                                data-form_action_attribute_to_delete="{{ path('employee_delete', {'employee': employee.id}) }}"
+                                data-form_action_attribute_to_delete="{{ path(delete_path, {'employee': employee.id}) }}"
                                 data-confirmation_message_to_delete="{{ 'The employee "%surnname%",  "%name%".'|trans({'%surname%': employee.surname,'%name%': employee.name}) }}"
                         >
                             <i class="fa fa-times"></i>
