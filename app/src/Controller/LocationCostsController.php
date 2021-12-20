@@ -1,96 +1,135 @@
 <?php
-
-namespace App\Controller;
-
-use App\Entity\LocationCosts;
-use App\Form\LocationCostsType;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-
-/**
- * @Route("/location/costs")
- */
-class LocationCostsController extends AbstractController
-{
+  
+  namespace App\Controller;
+  
+  use App\Constants\FormConstant;
+  use App\Constants\MessageConstants;
+  use App\Constants\TwigFileNameConstants;
+  use App\Entity\Employee;
+  use App\Entity\LocationCosts;
+  use App\Form\EmployeeType;
+  use App\Form\LocationCostsType;
+  use App\Repository\LocationCostsRepository;
+  use Doctrine\ORM\EntityManagerInterface;
+  use Symfony\Component\HttpFoundation\Request;
+  use Symfony\Component\HttpFoundation\Response;
+  use Symfony\Component\Routing\Annotation\Route;
+  
+  /**
+   * @Route("/backoffice/location-costs")
+   */
+  class LocationCostsController extends WebController {
+    
+    const TEMPLATES_FOLDER = 'backoffice/location_costs/';
+    
+    const INDEX_PATH = 'location_costs_index';
+    
+    const NEW_PATH = 'location_costs_new';
+    
+    const EDIT_PATH = 'location_costs_edit';
+    
+    const DELETE_PATH = 'location_costs_delete';
+    
+    private LocationCostsRepository $repository;
+    
+    public function __construct(LocationCostsRepository $repository) {
+      $this->repository = $repository;
+    }
+    
     /**
-     * @Route("/", name="location_costs_index", methods={"GET"})
+     * @Route("/list", name="location_costs_index", methods={"GET", "POST"})
      */
-    public function index(EntityManagerInterface $entityManager): Response
-    {
-        $locationCosts = $entityManager
-            ->getRepository(LocationCosts::class)
-            ->findAll();
-
-        return $this->render('location_costs/index.html.twig', [
-            'location_costs' => $locationCosts,
+    public function index(Request $request): Response {
+      $pagination = $this->repository->all(
+        $request->query->getInt('page', 1),
+        $request->query->getInt('size', 10)
+      );
+      
+      return $this->render(self::TEMPLATES_FOLDER . TwigFileNameConstants::INDEX,
+        [
+          'pagination' => $pagination,
+          'page_title' => 'Location Costs',
+          'index_path' => self::INDEX_PATH,
+          'new_path' => self::NEW_PATH,
+          'delete_path' => self::DELETE_PATH,
+          'edit_path' => self::EDIT_PATH,
         ]);
     }
-
+  
     /**
      * @Route("/new", name="location_costs_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $locationCost = new LocationCosts();
-        $form = $this->createForm(LocationCostsType::class, $locationCost);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($locationCost);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('location_costs_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('location_costs/new.html.twig', [
-            'location_cost' => $locationCost,
-            'form' => $form,
+    public function new(Request $request): Response {
+      
+      $locationCosts = new LocationCosts();
+      $form = $this->createForm(LocationCostsType::class, $locationCosts);
+      $form->handleRequest($request);
+    
+      if ($form->isSubmitted() && $form->isValid()) {
+        $this->repository->save($locationCosts);
+      
+        return $this->redirectWithSuccessMessage(
+          self::INDEX_PATH,
+          MessageConstants::SUCCESS_MESSAGE_TO_CREATE
+        );
+      }
+    
+      return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::NEW,
+        [
+          'locationCosts' => $locationCosts,
+          'form' => $form,
+          'action_to_do' => FormConstant::CREATE_ACTION_TEXT,
+          'page_title' => FormConstant::CREATE_ACTION_TEXT . ' Location Cost',
+          'index_path' => self::INDEX_PATH,
         ]);
     }
-
+  
     /**
-     * @Route("/{id}", name="location_costs_show", methods={"GET"})
+     * @Route("/{locationCosts}/edit", name="location_costs_edit", methods={"GET", "POST"})
      */
-    public function show(LocationCosts $locationCost): Response
-    {
-        return $this->render('location_costs/show.html.twig', [
-            'location_cost' => $locationCost,
+    public function edit(Request $request, LocationCosts $locationCosts): Response {
+      $form = $this->createForm(LocationCostsType::class, $locationCosts);
+      $form->handleRequest($request);
+    
+      if ($form->isSubmitted() && $form->isValid()) {
+        $this->repository->save($locationCosts);
+      
+        return $this->redirectWithSuccessMessage(
+          self::INDEX_PATH,
+          MessageConstants::SUCCESS_MESSAGE_TO_UPDATE
+        );
+      }
+  
+      return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::EDIT,
+        [
+          'locationCosts' => $locationCosts,
+          'form' => $form,
+          'action_to_do' => FormConstant::UPDATE_ACTION_TEXT,
+          'page_title' => FormConstant::UPDATE_ACTION_TEXT . ' Location Cost',
+          'index_path' => self::INDEX_PATH,
         ]);
-    }
-
+    }      
+    
     /**
-     * @Route("/{id}/edit", name="location_costs_edit", methods={"GET", "POST"})
+     * @Route("/{locationCosts}", name="location_costs_delete",
+     *   methods={"POST"})
      */
-    public function edit(Request $request, LocationCosts $locationCost, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(LocationCostsType::class, $locationCost);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('location_costs_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('location_costs/edit.html.twig', [
-            'location_cost' => $locationCost,
-            'form' => $form,
-        ]);
+    public function delete(Request $request, LocationCosts $locationCosts): Response {
+      
+      if (!$this->isCsrfTokenValid('delete',
+        $request->request->get('_token'))) {
+        return $this->redirectWithErrorMessage(
+          self::INDEX_PATH,
+          MessageConstants::INVALID_TOKEN_CSFR_MESSAGE
+        );
+      }
+      
+      $this->repository->delete($locationCosts);
+      
+      return $this->redirectWithSuccessMessage(
+        self::INDEX_PATH,
+        MessageConstants::SUCCESS_MESSAGE_TO_DELETE
+      );
     }
-
-    /**
-     * @Route("/{id}", name="location_costs_delete", methods={"POST"})
-     */
-    public function delete(Request $request, LocationCosts $locationCost, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$locationCost->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($locationCost);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('location_costs_index', [], Response::HTTP_SEE_OTHER);
-    }
-}
+    
+  }
