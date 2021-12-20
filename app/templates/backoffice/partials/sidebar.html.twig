@@ -1,0 +1,162 @@
+<aside class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user d-block d-sm-none">
+                <div class="avatar-sm float-left mr-2">
+                    <i class="far fa-user-circle"></i>
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									<span class="user-level">Admin</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+{#                                <a href="{{ path(''user_account_management'') }}">#}
+                                    <span class="link-collapse">Gestionar Cuenta</span>
+{#                                </a>#}
+                            </li>
+                            <li>
+{#                                <a href="{{ path(''logout'') }}">#}
+                                    <span class="link-collapse">
+                                        {{ 'Logout'|trans }}
+                                    </span>
+{#                                </a>#}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+{#                <li class="nav-item">#}
+{#                    <a href="{{ path(''dashboard'') }}">#}
+{#                        <i class="fas fa-home-alt"></i>#}
+{#                        <p>#}
+{#                            {{ 'Home'|trans }}#}
+{#                        </p>#}
+{#                        <span class="caret"></span>#}
+{#                    </a>#}
+{#                </li>#}
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#employee" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-user-tie"></i>
+                        <p>
+                            {{ 'Employee'|trans }}
+                        </p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="employee">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('employee_index') }}">
+                                    <span class="sub-item">
+                                        {{ 'All employees'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('employee_new') }}">
+                                    <span class="sub-item">
+                                        {{ 'Add new employee'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#employmentContract" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-file-contract"></i>
+                        <p>
+                            {{ 'Employment Contract'|trans }}
+                        </p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="employmentContract">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('travel_index') }}">
+                                    <span class="sub-item">
+                                        {{ 'All employment contract'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('travel_new') }}">
+                                    <span class="sub-item">
+                                        {{ 'Add new employment contract'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#jobDesignation" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-id-card"></i>
+                        <p>
+                            {{ 'Job Designation'|trans }}
+                        </p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="jobDesignation">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('trip_destination_index') }}">
+                                    <span class="sub-item">
+                                        {{ 'All Job Designations'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('trip_destination_new') }}">
+                                    <span class="sub-item">
+                                        {{ 'Add new job designation'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#school" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-school"></i>
+                        <p>
+                            {{ 'School Assisted By LST'|trans }}
+                        </p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="school">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('location_costs_index') }}">
+                                    <span class="sub-item">
+                                        {{ 'All schools assisted by LST'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('location_costs_new') }}">
+                                    <span class="sub-item">
+                                        {{ 'Add new school assisted by LST'|trans }}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item d-block d-sm-none">
+{#                    <a href="{{ path(''logout') }}" class="collapsed">#}
+                        <i class="fas fa-sign-out-alt"></i>
+                        <p>{{ 'Cerrar Sessión'|trans }}</p>
+{#                    </a>#}
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>

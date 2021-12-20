@@ -1,0 +1,261 @@
+{% extends 'backoffice.base.html.twig' %}
+{% block body %}
+
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">
+                <span> {{ 'List of'|trans }}</span>
+                {{ page_title|trans }}
+            </h4>
+            <ul class="breadcrumbs d-none d-sm-block">
+                <li class="nav-home">
+                    <a href="{{ path('employee_index') }}">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i> {{ 'List'|trans }}
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                <div class="row ">
+                                    <div class="col-sm-5 d-none d-sm-block"></div>
+                                    {# Start create an item on desktop version #}
+                                    <div class="col-sm-7 d-none d-sm-block">
+                                        {% block buttons_on_top_right_of_a_table %}
+                                            <a id="createItemLink"
+                                               class="btn btn-dark  btn-round ml-auto float-right text-white"
+                                               href="{{ path(new_path) }}"
+                                            >
+                                                {{ 'New'|trans }}
+                                                <span class=" ml-1 btn-label">
+                                                    <i class="fas fa-plus-circle"></i>
+                                                </span>
+                                            </a>
+                                        {% endblock %}
+                                    </div>
+                                    {# End create an item on desktop version #}
+
+                                    <div class="col-12">
+                                        <a
+                                                href="{{ path(pagination.getRoute) }}"
+                                                class="btn btn-black btn-border  btn-round t mr-2 btn-sm {{ pagination.getParams is  empty ? 'd-none':'' }}"
+                                        >
+                                            <span class="btn-label">
+                                                <i class="fa fa-times-circle text-danger "></i>
+                                            </span>
+                                            {{ 'Clean Filters'|trans }}
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {% block table %}{% endblock %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-9">
+                                        <div class="dataTables_info" id="add-row_info" role="status" aria-live="polite">
+                                            {{ 'Showing %currentPage% to %totalPage% of %totalItem% entries.'|trans({'%currentPage%': pagination.getPage,'%totalPage%': pagination.getPageCount
+                                                , '%totalItem%': pagination.getTotalItemCount}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="add-row_paginate">
+                                            {{ knp_pagination_render(pagination) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# Start button to create an on mobile version #}
+    {% block button_to_create_on_mobile_version %}
+        <a href="{{ path(new_path) }}" class="create-button show-button-description d-block d-sm-none">
+            <i class="fas fa-plus create-icon"></i>
+        </a>
+    {% endblock %}
+    {# End button to create an on mobile version #}
+
+    {# Start button to open  modal filters on desktop version #}
+    <a href="#" class="filer-button show-button-description d-none d-sm-block text-white" data-label="Filtrar los datos"
+       data-toggle="modal" data-target="#filter-modal">
+        <i class="fas fa-search filter-icon"></i>
+    </a>
+    {# End button to open  modal filters on desktop version #}
+
+    {#  Start modal to filter items from a list on mobile and desktop version #}
+    <div class="modal" id="filter-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                {{ form_start(form_filter, {'action': path(pagination.getRoute, pagination.getParams), 'method': 'GET'}) }}
+
+                {% if (form_errors(form_filter)) %}
+
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">
+                            <i class="fas fa-exclamation-circle text-danger"></i> There were some errors.
+                        </h4>
+                        <p>Please review the fields marked in red on your form.</p>
+                        <p>{{ form_errors(form_filter) }}</p>
+                    </div>
+
+                {% endif %}
+                <div class="modal-header">
+                    <h3 class="modal-title">Filtrar los datos del listado</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        {% block form_filter_fields %}{% endblock %}
+                        {% if pagination.getSort is not empty %}
+                            <input type="hidden" name="sort" value="{{ pagination.getSort }}">
+                        {% endif %}
+                        {% if pagination.getDirection is not empty %}
+                            <input type="hidden" name="direction" value="{{ pagination.getDirection }}">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-focus" data-dismiss="modal"
+                            id="close-delete-confirmation-modal-on-click-button-cancel">
+                        <span class="btn-label">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                        {{ 'Cancel'|trans }}
+                    </button>
+
+                    {{ form_row(form_filter.save) }}
+                </div>
+
+                {{ form_end(form_filter) }}
+
+            </div>
+        </div>
+    </div>
+    {# Start modal to filter items from a list on mobile and desktop version #}
+
+    {# Start modal to confirm a delete on desktop version #}
+    <div class="modal" id="delete-confirmation-modal" aria-hidden="true">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box text-danger" id="icon-delete-confirm">
+                        <i class="far fa-trash-alt"></i>
+                    </div>
+                    <h4 class="modal-title w-100">{{ 'Are you sure you want to delete?'|trans }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <form id="delete-confirmation-form" action="" method="post">
+                        <p id="message-to-delete-confirmation"></p>
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                        <button type="button" class="btn btn-focus" data-dismiss="modal">
+                            <span class="btn-label">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                            {{ 'Cancel'|trans }}
+                        </button>
+                        <button type="submit" class="btn btn-danger confirm-delete-button">
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            {{ 'Yes, delete it'|trans }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# End modal to confirm a delete on desktop version #}
+
+
+
+    {# Start modal to delete or edit on mobile #}
+    <div class="modal" id="mobile-actions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title ml-4 pr-2">
+                        <i class="text-primary fas fa-sticky-note"></i>
+                        <b id="modal-title"></b>
+                    </h5>
+                </div>
+                <div class="modal-body ml-4">
+                    <a href="#"
+                       id="edit-mobile"
+                       class="text-dark"
+                    >
+                        <h5 class="modal-title mb-4">
+                            <i class="fa fa-edit pr-2"></i>Edit
+                        </h5>
+                    </a>
+                    <a href="#"
+                       id="mobile-delete-button"
+                       class="text-dark delete"
+                       data-toggle="modal"
+                       data-target="#delete-confirmation-modal"
+                       data-form_action_attribute_to_delete=""
+                       data-confirmation_message_to_delete=""
+                    >
+                        <h5 class="modal-title mb-4">
+                            <i class="text-dark fas fa-trash pr-2"></i>Delete
+                        </h5>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {# End modal to delete or edit on mobile #}
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if app.session.flashbag.peek('success') %}
+        <script>
+            function getNotificationMessage() {
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                return '{{ flashMessage }}'
+                {% endfor %}
+            }
+        </script>
+        <script src="{{ asset('assets/js/blog/_shared/form/display.success.message.js') }}"></script>
+    {% endif %}
+    {% if app.session.flashbag.peek('error') %}
+        <script>
+            function getNotificationMessage() {
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                return '{{ flashMessage }}'
+                {% endfor %}
+            }
+        </script>
+        <script src="{{ asset('assets/js/blog/_shared/form/display.error.message.js') }}"></script>
+    {% endif %}
+
+    <script src="{{ asset('assets/js/blog/_shared/list/pass.data.to.delete.confirmation.modal.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/show.action.mobile.modal.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#createItemLink').focus();
+        });
+    </script>
+{% endblock %}

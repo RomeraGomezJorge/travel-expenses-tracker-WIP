@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LocationCosts index{% endblock %}
+
+{% block body %}
+    <h1>LocationCosts index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Location</th>
+                <th>Cost</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location_cost in location_costs %}
+            <tr>
+                <td>{{ location_cost.id }}</td>
+                <td>{{ location_cost.location }}</td>
+                <td>{{ location_cost.cost }}</td>
+                <td>
+                    <a href="{{ path('location_costs_show', {'id': location_cost.id}) }}">show</a>
+                    <a href="{{ path('location_costs_edit', {'id': location_cost.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('location_costs_new') }}">Create new</a>
+{% endblock %}

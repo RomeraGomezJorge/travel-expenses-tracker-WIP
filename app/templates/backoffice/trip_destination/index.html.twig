@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TripDestination index{% endblock %}
+
+{% block body %}
+    <h1>TripDestination index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trip_destination in trip_destinations %}
+            <tr>
+                <td>{{ trip_destination.id }}</td>
+                <td>{{ trip_destination.name }}</td>
+                <td>
+                    <a href="{{ path('trip_destination_show', {'id': trip_destination.id}) }}">show</a>
+                    <a href="{{ path('trip_destination_edit', {'id': trip_destination.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('trip_destination_new') }}">Create new</a>
+{% endblock %}
