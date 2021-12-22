@@ -7,22 +7,20 @@
   
   use App\Entity\LocationCosts;
   use App\Repository\LocationCostsRepository;
+  use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
+  
 
   final class DoctrineLocationCostsRepository extends DoctrineRepository implements LocationCostsRepository {
     
     const ENTITY_CLASS = LocationCosts::class;
     
-    public function all($page, $size) {
+    public function all($page, $size):SlidingPagination {
 
       $qb = $this->repository(self::ENTITY_CLASS)
         ->createQueryBuilder('l')
         ->select('l.id','l.location','l.cost');
       
       return $this->paginator()->paginate($qb, $page, $size);
-    }
-    
-    public function findById( int $id):?LocationCosts {
-      return $this->repository(self::ENTITY_CLASS)->findOneBy(['id'=>$id]);
     }
     
     public function save(LocationCosts $locationCosts): void {

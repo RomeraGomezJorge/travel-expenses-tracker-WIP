@@ -5,12 +5,11 @@
   
   
   use App\Entity\LocationCosts;
-
+  use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
+  
   interface LocationCostsRepository {
     
-    public function all(int $page, int $size);
-    
-    public function findById(int $id);
+    public function all(int $page, int $size):SlidingPagination;
   
     public function save(LocationCosts $locationCosts): void;
   

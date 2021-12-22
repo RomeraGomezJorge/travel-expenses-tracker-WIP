@@ -5,12 +5,13 @@
   
   use App\Entity\Employee;
   use App\Repository\EmployeeRepository;
-  
+  use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
+
   final class DoctrineEmployeeRepository extends DoctrineRepository implements EmployeeRepository {
     
     const ENTITY_CLASS = Employee::class;
     
-    public function all( $filter,int $page, int $size, string $sort, string $direction) {
+    public function all( $filter,int $page, int $size, string $sort, string $direction):SlidingPagination {
       $qb = $this->repository(self::ENTITY_CLASS)
         ->createQueryBuilder('e')
         ->select('e.id','e.name','e.surname','e.identityCard');
@@ -38,10 +39,6 @@
       $qb->orderBy($sort, $direction === 'desc' ? 'DESC' : 'ASC');
       
       return $this->paginator()->paginate($qb, $page, $size);
-    }
-  
-    public function findById( int $id):?Employee {
-      return $this->repository(self::ENTITY_CLASS)->findOneBy(['id'=>$id]);
     }
     
     public function save(Employee $employee): void {
