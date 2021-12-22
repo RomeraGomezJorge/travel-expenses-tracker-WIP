@@ -1,9 +1,10 @@
 <?php
   
   
-  namespace App\Repository\Doctrine;
+  namespace App\Repository\Doctrine\Employee;
   
   use App\Entity\Employee;
+  use App\Repository\Doctrine\DoctrineRepository;
   use App\Repository\EmployeeRepository;
   use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 
