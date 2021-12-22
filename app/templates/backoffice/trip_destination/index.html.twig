@@ -1,35 +1,106 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}TripDestination index{% endblock %}
-
-{% block body %}
-    <h1>TripDestination index</h1>
-
-    <table class="table">
+{% extends 'backoffice/list_items_base.html.twig' %}
+{% block title %}  {{ section_title }} {% endblock %}
+{% block page_title %} {{ section_title }} {% endblock  page_title %}
+{% block table %}
+    <table id="add-row"
+           class="display table table-striped table-hover dataTable"
+           role="grid"
+           aria-describedby="add-row_info">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
+        <tr role="row">
+            <th class="{{ pagination.isSorted('t.name')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Name', 't.name') }}
+            </th>
+            <th class="d-none d-sm-table-cell">
+                Location and cost
+            </th>
+            <th class="d-none d-sm-table-cell" style="width: 132.8px;">
+                {{ 'Action'|trans }}
+            </th>
+        </tr>
         </thead>
         <tbody>
-        {% for trip_destination in trip_destinations %}
-            <tr>
-                <td>{{ trip_destination.id }}</td>
-                <td>{{ trip_destination.name }}</td>
-                <td>
-                    <a href="{{ path('trip_destination_show', {'id': trip_destination.id}) }}">show</a>
-                    <a href="{{ path('trip_destination_edit', {'id': trip_destination.id}) }}">edit</a>
+        {% for trip_destination in pagination %}
+            <tr role="row" class="odd" >
+                <td class=" d-table-cell d-sm-none cursor-pointer"
+                    data-toggle="modal"
+                    data-target="#mobile-actions-modal"
+                    data-edit_path="{{ path(edit_path, {'tripDestination': trip_destination.id}) }}"
+                    data-form_action_attribute_to_delete="{{ path(delete_path, {'tripDestination': trip_destination.id}) }}"
+                    data-confirmation_message_to_delete='{{ 'The trip destination "%name%".'|trans({'%name%': trip_destination.name}) }}'
+                    data-modal_title='{{ trip_destination.name }}'
+                >
+                    <div class="row pt-2">
+                        <div class="col-10">
+                            <ul>
+                                <li>{{ trip_destination.name }}</li>
+                                <li>{{ trip_destination.location }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-2"><i class="fas fa-ellipsis-v"></i></div>
+                    </div>
+                </td>
+                <td class="d-none d-sm-table-cell">{{ trip_destination.name }}</td>
+                <td class="d-none d-sm-table-cell">{{ trip_destination.location }} ( ${{ trip_destination.cost }} )</td>
+                <td class="d-none d-sm-table-cell">
+                    <div class="d-block d-sm-none">
+                        <button type="button" class="btn btn-link text-dark">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-none d-sm-block">
+                    <span class="form-button-dots">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                        <span class="form-button-action">
+                        <a href="{{ path(edit_path, {'tripDestination': trip_destination.id}) }}"
+                           class="editItemLink btn btn-link btn-primary btn-lg">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <button type="button"
+                                class="btn btn-link btn-danger delete"
+                                data-toggle="modal"
+                                data-target="#delete-confirmation-modal"
+                                data-form_action_attribute_to_delete="{{ path(delete_path, {'tripDestination': trip_destination.id}) }}"
+                                data-confirmation_message_to_delete='{{ 'The trip destination "%name%".'|trans({'%name%': trip_destination.name}) }}'
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+
+                    </span>
+                    </div>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td class="text-center" colspan="3">
+                    <i class="fas fa-exclamation-circle text-info"></i> &nbsp;{{ 'No results were found.'|trans }}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+{% block form_filter_fields %}
+    <div class="col-lg-12">
+        <div class="form-group {{ form_errors(form_filter.name)?'has-error': '' }}">
+            {{ form_label(form_filter.name) }}
+            {{ form_widget(form_filter.name) }}
+            <small class="errorLabelContainer form-text text-muted text-danger">
+                <span class="has-error">{{ form_errors(form_filter.name) }} </span>
+            </small>
+        </div>
+    </div>
 
-    <a href="{{ path('trip_destination_new') }}">Create new</a>
+{#    <div class="col-lg-12">#}
+{#        <div class="form-group {{ form_errors(form_filter.surname)?'has-error': '' }}">#}
+{#            {{ form_label(form_filter.surname) }}#}
+{#            {{ form_widget(form_filter.surname) }}#}
+{#            <small class="errorLabelContainer form-text text-muted text-danger">#}
+{#                <span class="has-error">{{ form_errors(form_filter.surname) }} </span>#}
+{#            </small>#}
+{#        </div>#}
+{#    </div>#}
+
 {% endblock %}

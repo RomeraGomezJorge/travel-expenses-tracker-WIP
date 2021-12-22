@@ -7,6 +7,8 @@
   use Doctrine\ORM\EntityManagerInterface;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+  use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+  use Symfony\Component\Form\Extension\Core\Type\TextType;
   use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   
@@ -23,11 +25,29 @@
       array $options
     ): void {
       $builder
-        ->add('name')
+        ->add('name', TextType::class, [
+          'required' => TRUE,
+          'attr' => [
+            'class' => 'form-control',
+            'placeholder' => '- Required -',
+            'autofocus' => TRUE
+          ],
+          'label' => 'Name ( * )',
+        ])
         ->add('locationCosts', ChoiceType::class, [
           'expanded' => 'radio',
           'choices' => $this->em->getRepository("App:LocationCosts")->findAll(),
           'choice_label' => 'location',
+          'label' => 'Location Costs ( * )',
+        ])
+        ->add('save', SubmitType::class, [
+          'attr' => [
+            'class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',
+            'id'=> 'id="submitBtn',
+          ]
+          ,
+          'label_html' => TRUE,
+          'label' => '<span class="btn-label"><i class="fas fa-save"></i></span> Save',
         ]);
     }
     

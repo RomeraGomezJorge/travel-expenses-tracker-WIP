@@ -1,11 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice/form_to_handle_item.base.html.twig' %}
 
-{% block title %}New TripDestination{% endblock %}
+{% block form_body %}
 
-{% block body %}
-    <h1>Create new TripDestination</h1>
+    {{ include('backoffice/trip_destination/_form.html.twig') }}
 
-    {{ include('trip_destination/_form.html.twig') }}
-
-    <a href="{{ path('trip_destination_index') }}">back to list</a>
 {% endblock %}
