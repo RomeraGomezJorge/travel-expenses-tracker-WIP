@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * LocationCosts
  *
  * @ORM\Table(name="location_costs", uniqueConstraints={@ORM\UniqueConstraint(name="location", columns={"location"})})
+ * @UniqueEntity("location")
  * @ORM\Entity
  */
 class LocationCosts

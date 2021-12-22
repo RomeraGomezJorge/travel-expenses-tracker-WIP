@@ -111,7 +111,7 @@
     }      
     
     /**
-     * @Route("/{locationCosts}", name="location_costs_delete",
+     * @Route("/list/{locationCosts}", name="location_costs_delete",
      *   methods={"POST"})
      */
     public function delete(Request $request, LocationCosts $locationCosts): Response {
