@@ -1,38 +1,14 @@
 {{ form_start(form) }}
 
-    <div class="col-lg-12">
-        <div class="form-group {{ form_errors(form.name)?'has-error': ''  }}">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-            <small class="errorLabelContainer form-text text-muted text-danger">
-                <span class="has-error">{{ form_errors(form.name) }} </span>
-            </small>
-        </div>
-    </div>
+<div class="col-lg-12">
+    {{ form_row(form.name) }}
+    {{ form_row(form.surname) }}
+    {{ form_row(form.identityCard) }}
+</div>
 
-    <div class="col-lg-12">
-        <div class="form-group {{ form_errors(form.surname)?'has-error': ''  }}">
-            {{ form_label(form.surname) }}
-            {{ form_widget(form.surname) }}
-            <small class="errorLabelContainer form-text text-muted text-danger">
-                <span class="has-error">{{ form_errors(form.surname) }} </span>
-            </small>
-        </div>
-    </div>
-
-    <div class="col-lg-12">
-        <div class="form-group {{ form_errors(form.identityCard)?'has-error': ''  }}">
-            {{ form_label(form.identityCard) }}
-            {{ form_widget(form.identityCard) }}
-            <small class="errorLabelContainer form-text text-muted text-danger">
-                <span class="has-error">{{ form_errors(form.identityCard) }} </span>
-            </small>
-        </div>
-    </div>
-
-    <div class="card-action">
-        {{ form_row(form.save) }}
-    </div>
+<div class="card-action">
+    {{ form_row(form.save) }}
+</div>
 
 {{ form_end(form) }}
 

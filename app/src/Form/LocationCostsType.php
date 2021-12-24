@@ -18,7 +18,6 @@ class LocationCostsType extends AbstractType
         ->add('location', TextType::class, [
           'required' => TRUE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],
@@ -28,7 +27,6 @@ class LocationCostsType extends AbstractType
         ->add('cost', IntegerType::class, [
           'required' => FALSE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Required -',
           ],
           'label' => 'Cost ( * )',

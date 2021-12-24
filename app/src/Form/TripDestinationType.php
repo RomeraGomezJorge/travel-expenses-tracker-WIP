@@ -28,7 +28,6 @@
         ->add('name', TextType::class, [
           'required' => TRUE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],

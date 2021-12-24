@@ -20,7 +20,6 @@
         ->add('name', TextType::class, [
           'required' => TRUE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],
@@ -29,7 +28,6 @@
         ->add('surname', TextType::class, [
           'required' => TRUE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Required -',
           ],
           'label' => 'Surname ( * )',
@@ -37,7 +35,6 @@
         ->add('identityCard', IntegerType::class, [
           'required' => FALSE,
           'attr' => [
-            'class' => 'form-control',
             'placeholder' => '- Optional -',
             'maxlength' => '8'
           ],

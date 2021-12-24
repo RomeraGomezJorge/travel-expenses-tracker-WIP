@@ -1,4 +1,5 @@
 {% extends 'backoffice.base.html.twig' %}
+{% form_theme form 'custom_templates/form_div_layout.html.twig' %}
 {% block body %}
     <div class="page-inner">
         <div class="page-header">
@@ -54,8 +55,4 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/js/blog/_shared/form/validate.form.fields.js') }}"></script>
-    {% if not form.vars.valid %}
-        <script src="{{ asset('assets/js/blog/_shared/form/display.error.message.on.invalid.field.js') }}"></script>
-    {% endif %}
-
 {% endblock %}

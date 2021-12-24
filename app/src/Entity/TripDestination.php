@@ -1,6 +1,8 @@
 <?php
   
   namespace App\Entity;
+  use Doctrine\Common\Collections\ArrayCollection;
+  use Doctrine\Common\Collections\Collection;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
   
@@ -40,6 +42,15 @@
      * })
      */
     private $locationCosts;
+  
+    /**
+     * @ORM\ManyToMany(targetEntity="Travel", mappedBy="tripDestinations")
+     */
+    private $travels;
+  
+    public function __construct() {
+      $this->travels = new ArrayCollection();
+    }
     
     public function getId(): ?int {
       return $this->id;
@@ -64,5 +75,34 @@
       
       return $this;
     }
+  
+    /**
+     * @return ArrayCollection|\App\Entity\Travel[]
+     */
+    public function getTravels(): Collection
+    {
+      return $this->travels;
+    }
+  
+    public function addTravel(?Travel $travel): self
+    {
+      if (!$this->travels->contains($travel)) {
+        $this->travels[] = $travel;
+      }
+      return $this;
+    }
+  
+    public function removeTravel(?Travel $travel): self
+    {
+      if ($this->travels->contains($travel)) {
+        $this->travels->removeElement($travel);
+      }
     
+      return $this;
+    }
+    
+    public function __toString() {
+      return $this->name;
+    }
+  
   }

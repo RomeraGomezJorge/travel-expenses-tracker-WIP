@@ -1,11 +1,22 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}New Travel{% endblock %}
-
-{% block body %}
-    <h1>Create new Travel</h1>
-
-    {{ include('travel/_form.html.twig') }}
-
-    <a href="{{ path('travel_index') }}">back to list</a>
+{% extends 'backoffice/form_to_handle_item.base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/select2/select2.min.css') }}">
 {% endblock %}
+{% block form_body %}
+
+    {{ include('backoffice/travel/_form.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function () {
+            $('select').select2({closeOnSelect: false, placeholder: '- ' + Translator.trans('Required') + ' -'});
+        });
+    </script>
+    <script src="{{ asset('assets/js/plugin/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset("assets/js/blog/travel/form/calculate.travel.expenses.js") }}"></script>
+{% endblock  %}

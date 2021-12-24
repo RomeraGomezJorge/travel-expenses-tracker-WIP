@@ -237,7 +237,7 @@ t.add("The username you entered is already in use.", "El nombre de usuario que h
 t.add("Password reset process failed if the problem continues, please contact support.", "La contrase\u00f1a no se pudo restablecer, si el problema persiste ponte en contacto con soporte tecnico.", "messages", "es");
 t.add("Password changed!", "\u00a1Se ha restablecido la contrase\u00f1a!", "messages", "es");
 t.add("My account", "Gestionar tu cuenta", "messages", "es");
-t.add("Employee Management System", "Sistema de gesti\u00f3n del personal", "messages", "es");
+t.add("Travel Expenses Tracker", "Sistema de gesti\u00f3n del personal", "messages", "es");
 t.add("Select a value", "Seleccione un valor", "messages", "es");
 t.add("Learning Support Team Category", "Categor\u00eda De Equipo ", "messages", "es");
 t.add("Learning support team category", "Categor\u00eda de equipo ", "messages", "es");

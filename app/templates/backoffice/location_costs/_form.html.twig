@@ -1,23 +1,8 @@
 {{ form_start(form) }}
 
 <div class="col-lg-12">
-    <div class="form-group {{ form_errors(form.location)?'has-error': ''  }}">
-        {{ form_label(form.location) }}
-        {{ form_widget(form.location) }}
-        <small class="errorLabelContainer form-text text-muted text-danger">
-            <span class="has-error">{{ form_errors(form.location) }} </span>
-        </small>
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group {{ form_errors(form.cost)?'has-error': ''  }}">
-        {{ form_label(form.cost) }}
-        {{ form_widget(form.cost) }}
-        <small class="errorLabelContainer form-text text-muted text-danger">
-            <span class="has-error">{{ form_errors(form.cost) }} </span>
-        </small>
-    </div>
+    {{ form_row(form.location) }}
+    {{ form_row(form.cost) }}
 </div>
 
 <div class="card-action">

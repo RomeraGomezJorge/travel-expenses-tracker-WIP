@@ -1,41 +1,197 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Travel index{% endblock %}
-
-{% block body %}
-    <h1>Travel index</h1>
-
-    <table class="table">
+{% extends 'backoffice/list_items_base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/select2/select2.min.css') }}">
+{% endblock %}
+{% block title %}  {{ section_title }} {% endblock %}
+{% block page_title %} {{ section_title }} {% endblock  page_title %}
+{% block table %}
+    <table id="add-row"
+           class="display table table-striped table-hover dataTable"
+           role="grid"
+           aria-describedby="add-row_info">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>DepartureDate</th>
-                <th>ArrivalDate</th>
-                <th>TravelExpenses</th>
-                <th>ResolutionNumber</th>
-                <th>actions</th>
-            </tr>
+        <tr role="row">
+            <th class="{{ pagination.isSorted('t.resolution')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Resolution', 't.resolution') }}
+            </th>
+            <th class="{{ pagination.isSorted('t.expenses')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Expenses', 't.expenses') }}
+            </th>
+            <th class="{{ pagination.isSorted('t.arrivalDate')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Departure Date', 't.arrivalDate') }}
+            </th>
+            <th class="{{ pagination.isSorted('t.arrivalDate')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Arrival Date', 't.arrivalDate') }}
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Employee
+            </th>
+            <th class="d-none d-sm-table-cell" style="width: 132.8px;">
+                {{ 'Action'|trans }}
+            </th>
+        </tr>
         </thead>
         <tbody>
-        {% for travel in travel %}
-            <tr>
-                <td>{{ travel.id }}</td>
-                <td>{{ travel.departureDate ? travel.departureDate|date('Y-m-d') : '' }}</td>
-                <td>{{ travel.arrivalDate ? travel.arrivalDate|date('Y-m-d') : '' }}</td>
-                <td>{{ travel.travelExpenses }}</td>
-                <td>{{ travel.resolutionNumber }}</td>
-                <td>
-                    <a href="{{ path('travel_show', {'id': travel.id}) }}">show</a>
-                    <a href="{{ path('travel_edit', {'id': travel.id}) }}">edit</a>
+        {% for travel in pagination %}
+            <tr role="row" class="odd">
+                <td class=" d-table-cell d-sm-none cursor-pointer"
+                    data-toggle="modal"
+                    data-target="#mobile-actions-modal"
+                    data-edit_path="{{ path(edit_path, {'travel': travel.id}) }}"
+                    data-form_action_attribute_to_delete="{{ path(delete_path, {'travel': travel.id}) }}"
+                    data-confirmation_message_to_delete=''
+                    data-modal_title='{{ travel.resolution }}'
+                >
+                    <div class="row pt-2">
+                        <div class="col-10">
+                            <ul>
+                                <li>{{ travel.resolution }}</li>
+                                <li>{{ travel.expenses }}</li>
+                                <li>{{ travel.departureDate|date("d/m/Y") }}</li>
+                                <li>{{ travel.arrivalDate|date("d/m/Y") }}</li>
+                                <ul>
+                                    {% for destination in travel.tripDestinations %}
+                                        <li>{{ destination.name }}</li>
+                                    {% endfor %}
+                                </ul>
+
+                            </ul>
+                        </div>
+                        <div class="col-2"><i class="fas fa-ellipsis-v"></i></div>
+                    </div>
+                </td>
+                <td class="d-none d-sm-table-cell">{{ travel.resolution }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.expenses }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.departureDate|date("d/m/Y") }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.arrivalDate|date("d/m/Y") }}</td>
+                <td class="d-none d-sm-table-cell">
+                    {% for destination in travel.tripDestinations %}
+                        <li>{{ destination.name }}</li>
+                    {% endfor %}
+                </td>
+                <td class="d-none d-sm-table-cell">
+                    {% for employee in travel.employees %}
+                        <li>{{ employee.surname }}, {{ employee.name }}</li>
+                    {% endfor %}
+                </td>
+
+                <td class="d-none d-sm-table-cell">
+                    <div class="d-block d-sm-none">
+                        <button type="button" class="btn btn-link text-dark">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-none d-sm-block">
+                    <span class="form-button-dots">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                        <span class="form-button-action">
+                        <a href="{{ path(edit_path, {'travel': travel.id}) }}"
+                           class="editItemLink btn btn-link btn-primary btn-lg">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <button type="button"
+                                class="btn btn-link btn-danger delete"
+                                data-toggle="modal"
+                                data-target="#delete-confirmation-modal"
+                                data-form_action_attribute_to_delete="{{ path(delete_path, {'travel': travel.id}) }}"
+                                data-confirmation_message_to_delete=""
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+
+                    </span>
+                    </div>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td class="text-center" colspan="7">
+                    <i class="fas fa-exclamation-circle text-info"></i> &nbsp;{{ 'No results were found.'|trans }}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('travel_new') }}">Create new</a>
 {% endblock %}
+{% block form_filter_fields %}
+    <div class="col-lg-12">
+        {{ form_row(form_filter.resolution) }}
+        {{ form_row(form_filter.expenses) }}
+        {{ form_row(form_filter.employee) }}
+        {{ form_row(form_filter.tripDestination) }}
+    </div>
+
+
+    <div class="col-lg-12 form-group">
+        <label>Departure Date</label>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group {{ form_errors(form_filter.departureDateFrom)?'has-error': '' }}">
+                    <div class="small">From</div>
+                    {{ form_widget(form_filter.departureDateFrom) }}
+                    <small class="errorLabelContainer form-text text-muted text-danger">
+                        <span class="has-error">{{ form_errors(form_filter.departureDateFrom) }} </span>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group {{ form_errors(form_filter.departureDateTill)?'has-error': '' }}">
+                    <div class="small">Till</div>
+                    {{ form_widget(form_filter.departureDateTill) }}
+                    <small class="errorLabelContainer form-text text-muted text-danger">
+                        <span class="has-error">{{ form_errors(form_filter.departureDateTill) }} </span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 form-group">
+        <label>Arrival Date</label>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group {{ form_errors(form_filter.arrivalDateFrom)?'has-error': '' }}">
+                    <div class="small">From</div>
+                    {{ form_widget(form_filter.arrivalDateFrom) }}
+                    <small class="errorLabelContainer form-text text-muted text-danger">
+                        <span class="has-error">{{ form_errors(form_filter.arrivalDateFrom) }} </span>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group {{ form_errors(form_filter.arrivalDateTill)?'has-error': '' }}">
+                    <div class="small">Till</div>
+                    {{ form_widget(form_filter.arrivalDateTill) }}
+                    <small class="errorLabelContainer form-text text-muted text-danger">
+                        <span class="has-error">{{ form_errors(form_filter.arrivalDateTill) }} </span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/plugin/select2/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#form_employee').select2({
+                dropdownParent: $('#filter-modal'),
+                placeholder: '- ' + Translator.trans('Filter by employee') + ' -'
+            });
+
+            $('#form_tripDestination').select2({
+                dropdownParent: $('#filter-modal'),
+                placeholder: '- ' + Translator.trans('Filter by trip destination') + ' -'
+            });
+        });
+    </script>
+{% endblock  %}
