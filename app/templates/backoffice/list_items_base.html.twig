@@ -241,7 +241,7 @@
         <script>
             function getNotificationMessage() {
                 {% for flashMessage in app.session.flashbag.get('success') %}
-                return '{{ flashMessage }}'
+                return '{{ flashMessage|trans }}'
                 {% endfor %}
             }
         </script>
@@ -251,7 +251,7 @@
         <script>
             function getNotificationMessage() {
                 {% for flashMessage in app.session.flashbag.get('error') %}
-                return '{{ flashMessage }}'
+                    return '{{ flashMessage|trans }}'
                 {% endfor %}
             }
         </script>
@@ -265,7 +265,7 @@
             $('#createItemLink').focus();
         });
     </script>
-     {% if not form_filter.vars.valid %}
+     {% if form_filter is defined and not form_filter.vars.valid %}
          <script src="{{ asset('assets/js/blog/_shared/list/show.modal.filter.on.invalid.filters.js') }}"></script>
     {% endif %}
 {% endblock %}

@@ -41,7 +41,7 @@
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Departure Date ( * )',
+          'label' => 'Departure Date',
         ])
         ->add('arrivalDate', DateType::class, [
           'widget' => 'single_text',
@@ -49,7 +49,7 @@
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Arrival Date ( * )',
+          'label' => 'Arrival Date',
         ])
 
         ->add('employees', EntityType::class, [
@@ -59,7 +59,7 @@
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Employees ( * )'
+          'label' => 'Employees'
         ])
         ->add('tripDestinations', EntityType::class, [
           'class' => TripDestination::class,
@@ -71,14 +71,14 @@
           'choice_attr' => function (TripDestination $product, $key, $index) {
             return ['data-cost' => $product->getLocationCosts()->getCost() ];
           },
-          'label' => 'Trip Destinations ( * )',
+          'label' => 'Destinations',
         ])
         ->add('expenses', IntegerType::class, [
-          'required' => FALSE,
+          'required' => TRUE,
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Expenses ( * )',
+          'label' => 'Expenses',
         ])
         ->add('save', SubmitType::class, [
           'attr' => [
@@ -86,8 +86,7 @@
             'id' => 'id="submitBtn',
           ]
           ,
-          'label_html' => TRUE,
-          'label' => '<span class="btn-label"><i class="fas fa-save"></i></span> Save',
+          'label' => 'Save',
         ]);
     }
     

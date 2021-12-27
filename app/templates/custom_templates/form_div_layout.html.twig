@@ -1,3 +1,41 @@
+{# Widgets #}
+{%- block button_widget -%}
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) %}
+        {%- elseif label is not same as(false) -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        {%- if label|lower == 'save' -%}
+            <span class="btn-label"><i class="fas fa-save"></i></span>
+        {%- endif -%}
+
+        {%- if translation_domain is same as(false) -%}
+            {%- if label_html is same as(false) -%}
+                {{- label -}}
+            {%- else -%}
+                {{- label|raw -}}
+            {%- endif -%}
+        {%- else -%}
+            {%- if label_html is same as(false) -%}
+                {{- label|trans(label_translation_parameters, translation_domain) -}}
+            {%- else -%}
+                {{- label|trans(label_translation_parameters, translation_domain)|raw -}}
+            {%- endif -%}
+        {%- endif -%}
+    </button>
+{%- endblock button_widget -%}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    {{ block('button_widget') }}
+{%- endblock submit_widget -%}
+
 {# Labels #}
 {% block form_label -%}
     {% if label is not same as(false) -%}
@@ -33,6 +71,9 @@
             {%- else -%}
                 {{- label|trans(label_translation_parameters, translation_domain)|raw -}}
             {%- endif -%}
+        {%- endif -%}
+        {% if required -%}
+             {{ ' ( * )' }}
         {%- endif -%}
         </{{ element|default('label') }}>
     {%- else -%}

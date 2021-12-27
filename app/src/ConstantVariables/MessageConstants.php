@@ -1,7 +1,7 @@
 <?php
   
   
-  namespace App\Constants;
+  namespace App\ConstantVariables ;
   
   
   final class MessageConstants {

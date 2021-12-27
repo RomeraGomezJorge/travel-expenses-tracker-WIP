@@ -9,10 +9,10 @@
         <thead>
         <tr role="row">
             <th class="{{ pagination.isSorted('t.name')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
-                {{ knp_pagination_sortable(pagination, 'Name', 't.name') }}
+                {{ knp_pagination_sortable(pagination, 'Name'|trans, 't.name') }}
             </th>
             <th class="d-none d-sm-table-cell">
-                Location and cost
+                {{ 'Location Costs'|trans }}
             </th>
             <th class="d-none d-sm-table-cell" style="width: 132.8px;">
                 {{ 'Action'|trans }}

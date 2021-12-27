@@ -23,14 +23,14 @@
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],
-          'label' => 'Name ( * )',
+          'label' => 'Name',
         ])
         ->add('surname', TextType::class, [
           'required' => TRUE,
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Surname ( * )',
+          'label' => 'Surname',
         ])
         ->add('identityCard', IntegerType::class, [
           'required' => FALSE,
@@ -44,10 +44,8 @@
           'attr' => [
             'class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',
             'id'=> 'id="submitBtn',
-            ]
-          ,
-          'label_html' => TRUE,
-          'label' => '<span class="btn-label"><i class="fas fa-save"></i></span> Save',
+            ],
+          'label' => 'Save',
         ]);
     }
     

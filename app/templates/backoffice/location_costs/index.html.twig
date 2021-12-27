@@ -9,10 +9,10 @@
         <thead>
             <tr role="row">
                 <th class="d-none d-sm-table-cell">
-                    Location
+                    {{ 'Location'|trans }}
                 </th>
                 <th class=" d-none d-sm-table-cell">
-                    Cost
+                    {{ 'Cost'|trans }}
                 </th>
                 <th class="d-none d-sm-table-cell" style="width: 132.8px;">
                     {{ 'Action'|trans }}
@@ -27,7 +27,7 @@
                     data-target="#mobile-actions-modal"
                     data-edit_path="{{ path(edit_path, {'locationCosts': location_costs.id}) }}"
                     data-form_action_attribute_to_delete="{{ path(delete_path, {'locationCosts': location_costs.id}) }}"
-                    data-confirmation_message_to_delete='{{ 'The  "%location%".'|trans({'%location%': location_costs.location}) }}'
+                    data-confirmation_message_to_delete='{{ 'The location "%location%".'|trans({'%location%': location_costs.location}) }}'
                     data-modal_title='{{ location_costs.location }}'
                 >
                     <div class="row pt-2">
@@ -62,7 +62,7 @@
                                 data-toggle="modal"
                                 data-target="#delete-confirmation-modal"
                                 data-form_action_attribute_to_delete="{{ path(delete_path, {'locationCosts': location_costs.id}) }}"
-                                data-confirmation_message_to_delete='{{ 'The  "%location%".'|trans({'%location%': location_costs.location}) }}'
+                                data-confirmation_message_to_delete='{{ 'The location "%location%".'|trans({'%location%': location_costs.location}) }}'
                         >
                             <i class="fa fa-times"></i>
                         </button>

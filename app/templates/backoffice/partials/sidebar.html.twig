@@ -18,7 +18,7 @@
                         <ul class="nav">
                             <li>
 {#                                <a href="{{ path(''user_account_management'') }}">#}
-                                    <span class="link-collapse">Gestionar Cuenta</span>
+                                    <span class="link-collapse">{{ 'User Management'|trans }}</span>
 {#                                </a>#}
                             </li>
                             <li>
@@ -70,26 +70,26 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#employmentContract" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-file-contract"></i>
+                    <a data-toggle="collapse" href="#travel" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-route"></i>
                         <p>
-                            {{ 'Employment Contract'|trans }}
+                            {{ 'Travel'|trans }}
                         </p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="employmentContract">
+                    <div class="collapse" id="travel">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{ path('travel_index') }}">
                                     <span class="sub-item">
-                                        {{ 'All employment contract'|trans }}
+                                        {{ 'All travels'|trans }}
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('travel_new') }}">
                                     <span class="sub-item">
-                                        {{ 'Add new employment contract'|trans }}
+                                        {{ 'Add new travel'|trans }}
                                     </span>
                                 </a>
                             </li>
@@ -97,26 +97,26 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#jobDesignation" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-id-card"></i>
+                    <a data-toggle="collapse" href="#tripDestination" class="collapsed" aria-expanded="false">
+                        <i class="far fa-map"></i>
                         <p>
-                            {{ 'Job Designation'|trans }}
+                            {{ 'Trip Destination'|trans }}
                         </p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="jobDesignation">
+                    <div class="collapse" id="tripDestination">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{ path('trip_destination_index') }}">
                                     <span class="sub-item">
-                                        {{ 'All Job Designations'|trans }}
+                                        {{ 'All trip destinations'|trans }}
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('trip_destination_new') }}">
                                     <span class="sub-item">
-                                        {{ 'Add new job designation'|trans }}
+                                        {{ 'Add new trip destination'|trans }}
                                     </span>
                                 </a>
                             </li>
@@ -124,26 +124,26 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#school" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-school"></i>
+                    <a data-toggle="collapse" href="#locationCosts" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-dollar-sign"></i>
                         <p>
-                            {{ 'School Assisted By LST'|trans }}
+                            {{ 'Location Costs'|trans }}
                         </p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="school">
+                    <div class="collapse" id="locationCosts">
                         <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{ path('location_costs_index') }}">
                                     <span class="sub-item">
-                                        {{ 'All schools assisted by LST'|trans }}
+                                        {{ 'All location costs'|trans }}
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('location_costs_new') }}">
                                     <span class="sub-item">
-                                        {{ 'Add new school assisted by LST'|trans }}
+                                        {{ 'Add new location costs'|trans }}
                                     </span>
                                 </a>
                             </li>
@@ -153,7 +153,7 @@
                 <li class="nav-item d-block d-sm-none">
 {#                    <a href="{{ path(''logout') }}" class="collapsed">#}
                         <i class="fas fa-sign-out-alt"></i>
-                        <p>{{ 'Cerrar Sessión'|trans }}</p>
+                        <p>{{ 'Logout'|trans }}</p>
 {#                    </a>#}
                 </li>
             </ul>

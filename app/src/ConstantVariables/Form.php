@@ -1,8 +1,8 @@
 <?php
   
-  namespace App\Constants;
+  namespace App\ConstantVariables;
   
-  final class FormConstant
+  final class Form
   {
     const SUBMIT_BUTTON_VALUE_TO_UPDATE = 'Save';
     const UPDATE_ACTION_TEXT = 'Edit';

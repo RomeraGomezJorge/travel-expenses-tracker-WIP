@@ -2,9 +2,9 @@
   
   namespace App\Controller;
   
-  use App\Constants\FormConstant;
-  use App\Constants\MessageConstants;
-  use App\Constants\TwigFileNameConstants;
+  use App\ConstantVariables\Form;
+  use App\ConstantVariables\MessageConstants;
+  use App\ConstantVariables\TwigFileNameConstants;
   use App\Entity\Travel;
   use App\Form\TravelType;
   use App\Repository\Doctrine\Travel\Filter;
@@ -91,8 +91,8 @@
         [
           'travel' => $travel,
           'form' => $form,
-          'action_to_do' => FormConstant::CREATE_ACTION_TEXT,
-          'page_title' => FormConstant::CREATE_ACTION_TEXT . ' Travel',
+          'action_to_do' => Form::CREATE_ACTION_TEXT,
+          'page_title' => Form::CREATE_ACTION_TEXT . ' Travel',
           'index_path' => self::INDEX_PATH,
         ]);
     }
@@ -117,8 +117,8 @@
         [
           'travel' => $travel,
           'form' => $form,
-          'action_to_do' => FormConstant::UPDATE_ACTION_TEXT,
-          'page_title' => FormConstant::UPDATE_ACTION_TEXT . ' Travel',
+          'action_to_do' => Form::UPDATE_ACTION_TEXT,
+          'page_title' => Form::UPDATE_ACTION_TEXT . ' Travel',
           'index_path' => self::INDEX_PATH,
         ]);
     }

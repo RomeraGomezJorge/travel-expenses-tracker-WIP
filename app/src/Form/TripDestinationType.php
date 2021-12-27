@@ -31,13 +31,13 @@
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],
-          'label' => 'Name ( * )',
+          'label' => 'Name',
         ])
         ->add('locationCosts', ChoiceType::class, [
           'expanded' => 'radio',
           'choices' => $this->em->getRepository("App:LocationCosts")->findAll(),
-          'choice_label' => 'location',
-          'label' => 'Location Costs ( * )',
+          'choice_label' => 'locationAndCost',
+          'label' => 'Location Costs',
         ])
         ->add('save', SubmitType::class, [
           'attr' => [
@@ -45,8 +45,7 @@
             'id'=> 'id="submitBtn',
           ]
           ,
-          'label_html' => TRUE,
-          'label' => '<span class="btn-label"><i class="fas fa-save"></i></span> Save',
+          'label' => 'Save',
         ]);
     }
     

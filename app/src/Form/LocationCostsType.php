@@ -21,7 +21,7 @@ class LocationCostsType extends AbstractType
             'placeholder' => '- Required -',
             'autofocus' => TRUE
           ],
-          'label' => 'Location ( * )',
+          'label' => 'Location',
         ])
         
         ->add('cost', IntegerType::class, [
@@ -29,7 +29,7 @@ class LocationCostsType extends AbstractType
           'attr' => [
             'placeholder' => '- Required -',
           ],
-          'label' => 'Cost ( * )',
+          'label' => 'Cost',
         ])
         ->add('save', SubmitType::class, [
           'attr' => [
@@ -37,8 +37,7 @@ class LocationCostsType extends AbstractType
             'id'=> 'id="submitBtn',
           ]
           ,
-          'label_html' => TRUE,
-          'label' => '<span class="btn-label"><i class="fas fa-save"></i></span> Save',
+          'label' => 'Save',
         ]);
         ;
     }
