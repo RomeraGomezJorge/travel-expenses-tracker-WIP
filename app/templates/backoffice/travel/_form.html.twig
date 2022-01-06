@@ -1,11 +1,40 @@
 {{ form_start(form) }}
 <div class="col-lg-12">
-{{ form_row(form.resolution) }}
-{{ form_row(form.departureDate) }}
-{{ form_row(form.arrivalDate) }}
-{{ form_row(form.employees) }}
-{{ form_row(form.tripDestinations) }}
-{{ form_row(form.expenses) }}
+    <div class="form-group">
+        <div id="travellers-name-fields-list"
+             data-prototype="{{ form_widget(form.travellersNames.vars.prototype)|e }}"
+             data-widget-tags="{{ '<div></div>'|e }}"
+             data-widget-counter="{{ form.travellersNames|length }}">
+            {% for travellersName in form.travellersNames %}
+                <div>
+                    <div id="{{ travellersName.vars.id }}" class="row col-12">
+                        <div class="form-group mr-2 col-4">
+                            {{ form_row(travellersName.children.employee) }}
+                        </div>
+                        <div class="form-group mr-2 col-4">
+                            {{ form_row(travellersName.children.replacement) }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" class="add-another-collection-widget btn btn-focus mt-2 valid"
+                data-list-selector="#travellers-name-fields-list">
+            <span class="btn-label">
+                <span class="btn-label">
+                    <i class="fas fa-plus-circle text-success"></i>
+                </span>
+                {{ 'Add another traveller\'s name'|trans }}
+            </span>
+        </button>
+    </div>
+    {{ form_row(form.tripDestinations) }}
+    {{ form_row(form.departureDate) }}
+    {{ form_row(form.arrivalDate) }}
+    {{ form_row(form.resolution) }}
+    {{ form_row(form.expenses) }}
+
 </div>
 
 <div class="card-action">

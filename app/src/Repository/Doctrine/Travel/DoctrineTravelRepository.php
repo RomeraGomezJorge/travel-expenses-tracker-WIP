@@ -22,9 +22,10 @@
     ): SlidingPagination {
       $qb = $this->repository(self::ENTITY_CLASS)
         ->createQueryBuilder('t')
-        ->select('t', 'tripDestinations', 'employees')
+        ->select('t', 'tripDestinations', 'travellersNames')
+        ->select('t', 'tripDestinations')
         ->innerJoin('t.tripDestinations', 'tripDestinations')
-        ->innerJoin('t.employees', 'employees');
+        ->innerJoin('t.travellersNames', 'travellersNames');
       
       if ($filter->resolution) {
         $qb->andWhere('t.resolution = :resolution');
@@ -56,9 +57,10 @@
         $qb->setParameter(':expenses', $filter->expenses);
       }
       
-      if ($filter->employee) {
-        $qb->andWhere('employees.id = :employee');
-        $qb->setParameter(':employee', $filter->employee);
+      if ($filter->travellersNames) {
+        $qb->andWhere('travellersNames.employee = :travellersNames');
+        $qb->orWhere('travellersNames.replacement = :travellersNames');
+        $qb->setParameter(':travellersNames', $filter->travellersNames);
       }
       
       if ($filter->tripDestination) {
@@ -66,7 +68,7 @@
         $qb->setParameter(':tripDestination', $filter->tripDestination);
       }
       
-      if (!\in_array($sort, [
+      if (!in_array($sort, [
         't.id',
         't.resolution',
         't.departureDate',

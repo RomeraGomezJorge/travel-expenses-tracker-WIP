@@ -1,5 +1,4 @@
 .idea
-/app/.env
 /app/vendor/
 /app/var/
 /app/tests/

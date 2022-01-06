@@ -15,6 +15,7 @@ $(document).ready(function () {
 
 });
 function calculateTravelCost() {
+    let diffDays = 1;
 
     if ($('#travel_departureDate').val() === ''){
         return false;
@@ -28,10 +29,13 @@ function calculateTravelCost() {
         return false;
     }
 
-    const departureDate = new Date($('#travel_departureDate').val());
-    const arrivalDate = new Date($('#travel_arrivalDate').val());
-    const diffTime = Math.abs(arrivalDate - departureDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if( $('#travel_arrivalDate').val() !== $('#travel_departureDate').val()){
+        const departureDate = new Date($('#travel_departureDate').val());
+        const arrivalDate = new Date($('#travel_arrivalDate').val());
+        const diffTime = Math.abs(arrivalDate - departureDate);
+        diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    }
 
     const locationCost = $("#travel_tripDestinations").select2().find(":selected").data("cost");
 

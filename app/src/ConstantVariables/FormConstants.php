@@ -2,7 +2,7 @@
   
   namespace App\ConstantVariables;
   
-  final class Form
+  final class FormConstants
   {
     const SUBMIT_BUTTON_VALUE_TO_UPDATE = 'Save';
     const UPDATE_ACTION_TEXT = 'Edit';

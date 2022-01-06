@@ -12,11 +12,11 @@
            aria-describedby="add-row_info">
         <thead>
         <tr role="row">
-            <th class="{{ pagination.isSorted('t.resolution')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
-                {{ knp_pagination_sortable(pagination, 'Resolution'|trans, 't.resolution') }}
+            <th>
+                {{ 'Employees and replacements'|trans }}
             </th>
-            <th class="{{ pagination.isSorted('t.expenses')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
-                {{ knp_pagination_sortable(pagination, 'Expenses'|trans, 't.expenses') }}
+            <th>
+                {{ 'Destination'|trans }}
             </th>
             <th class="{{ pagination.isSorted('t.arrivalDate')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
                 {{ knp_pagination_sortable(pagination, 'Departure Date'|trans, 't.departureDate') }}
@@ -24,12 +24,14 @@
             <th class="{{ pagination.isSorted('t.arrivalDate')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
                 {{ knp_pagination_sortable(pagination, 'Arrival Date'|trans, 't.arrivalDate') }}
             </th>
-            <th>
-                {{ 'Destination'|trans }}
+            <th class="{{ pagination.isSorted('t.resolution')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Resolution'|trans, 't.resolution') }}
             </th>
-            <th>
-                {{ 'Employee'|trans }}
+            <th class="{{ pagination.isSorted('t.expenses')? 'sorting_' ~ pagination.getDirection:'' }} d-none d-sm-table-cell">
+                {{ knp_pagination_sortable(pagination, 'Expenses'|trans, 't.expenses') }}
             </th>
+
+
             <th class="d-none d-sm-table-cell" style="width: 132.8px;">
                 {{ 'Action'|trans }}
             </th>
@@ -65,21 +67,23 @@
                         <div class="col-2"><i class="fas fa-ellipsis-v"></i></div>
                     </div>
                 </td>
-                <td class="d-none d-sm-table-cell">{{ travel.resolution }}</td>
-                <td class="d-none d-sm-table-cell">{{ travel.expenses }}</td>
-                <td class="d-none d-sm-table-cell">{{ travel.departureDate|date("d/m/Y") }}</td>
-                <td class="d-none d-sm-table-cell">{{ travel.arrivalDate|date("d/m/Y") }}</td>
+                <td class="d-none d-sm-table-cell">
+                    <ul class="row">
+                        {% for travellerNames in travel.travellersNames %}
+                            <li class="col-6 mt-2 mb-2">{{ travellerNames.employee.fullname }}</li>
+                            <li class="col-6 mt-2 mb-2">{{ travellerNames.replacementFullname }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td class="d-none d-sm-table-cell">
                     {% for destination in travel.tripDestinations %}
                         <li>{{ destination.name }}</li>
                     {% endfor %}
                 </td>
-                <td class="d-none d-sm-table-cell">
-                    {% for employee in travel.employees %}
-                        <li>{{ employee.surname }}, {{ employee.name }}</li>
-                    {% endfor %}
-                </td>
-
+                <td class="d-none d-sm-table-cell">{{ travel.departureDate|date("d/m/Y") }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.arrivalDate|date("d/m/Y") }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.resolution }}</td>
+                <td class="d-none d-sm-table-cell">{{ travel.expenses }}</td>
                 <td class="d-none d-sm-table-cell">
                     <div class="d-block d-sm-none">
                         <button type="button" class="btn btn-link text-dark">
@@ -101,7 +105,7 @@
                                 data-toggle="modal"
                                 data-target="#delete-confirmation-modal"
                                 data-form_action_attribute_to_delete="{{ path(delete_path, {'travel': travel.id}) }}"
-                                data-confirmation_message_to_delete='{{ 'The travel with resolution "%resolution%".'|trans({'%resolution%': travel.resolution}) }}'                        >
+                                data-confirmation_message_to_delete='{{ 'The travel with resolution "%resolution%".'|trans({'%resolution%': travel.resolution}) }}'>
                             <i class="fa fa-times"></i>
                         </button>
 
@@ -123,17 +127,17 @@
     <div class="col-lg-12">
         {{ form_row(form_filter.resolution) }}
         {{ form_row(form_filter.expenses) }}
-        {{ form_row(form_filter.employee) }}
+        {{ form_row(form_filter.travellersNames) }}
         {{ form_row(form_filter.tripDestination) }}
     </div>
 
 
     <div class="col-lg-12 form-group">
-        <label>Departure Date</label>
+        <label>{{ 'Departure Date'|trans }}</label>
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group {{ form_errors(form_filter.departureDateFrom)?'has-error': '' }}">
-                    <div class="small">From</div>
+                    <div class="small">{{ 'From'|trans }}</div>
                     {{ form_widget(form_filter.departureDateFrom) }}
                     <small class="errorLabelContainer form-text text-muted text-danger">
                         <span class="has-error">{{ form_errors(form_filter.departureDateFrom) }} </span>
@@ -142,7 +146,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group {{ form_errors(form_filter.departureDateTill)?'has-error': '' }}">
-                    <div class="small">Till</div>
+
                     {{ form_widget(form_filter.departureDateTill) }}
                     <small class="errorLabelContainer form-text text-muted text-danger">
                         <span class="has-error">{{ form_errors(form_filter.departureDateTill) }} </span>
@@ -157,7 +161,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group {{ form_errors(form_filter.arrivalDateFrom)?'has-error': '' }}">
-                    <div class="small">From</div>
+                    <div class="small">{{ 'From'|trans }}</div>
                     {{ form_widget(form_filter.arrivalDateFrom) }}
                     <small class="errorLabelContainer form-text text-muted text-danger">
                         <span class="has-error">{{ form_errors(form_filter.arrivalDateFrom) }} </span>
@@ -166,7 +170,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group {{ form_errors(form_filter.arrivalDateTill)?'has-error': '' }}">
-                    <div class="small">Till</div>
+                    <div class="small">{{ 'Till'|trans }}</div>
                     {{ form_widget(form_filter.arrivalDateTill) }}
                     <small class="errorLabelContainer form-text text-muted text-danger">
                         <span class="has-error">{{ form_errors(form_filter.arrivalDateTill) }} </span>
@@ -194,4 +198,4 @@
             });
         });
     </script>
-{% endblock  %}
+{% endblock %}

@@ -738,7 +738,7 @@
       </trans-unit>
       <trans-unit id="emp4" resname='Employee'>
         <source>Employee</source>
-        <target>Empleados</target>
+        <target>Empleado</target>
       </trans-unit>
       <trans-unit id="emp5" resname='All employees'>
         <source>All employees</source>
@@ -812,6 +812,34 @@
       <trans-unit id="tra14" resname='The travel with resolution "%resolution%".'>
         <source>The travel with resolution "%resolution%".</source>
         <target>La comisión con la resolución "%resolution%".</target>
+      </trans-unit>
+      <trans-unit id="tra15" resname='Replacement'>
+        <source>Replacement</source>
+        <target>Reemplazo</target>
+      </trans-unit>
+      <trans-unit id="tra16" resname="Add another traveller's name">
+        <source>Add another traveller's name</source>
+        <target>Agregar otro viajero</target>
+      </trans-unit>
+      <trans-unit id="tra17" resname="Employees and replacements">
+        <source>Employees and replacements</source>
+        <target>Empleados y remplazos</target>
+      </trans-unit>
+      <trans-unit id="tra18" resname="From">
+        <source>From</source>
+        <target>Desde</target>
+      </trans-unit>
+      <trans-unit id="tra20" resname="Till">
+        <source>Till</source>
+        <target>Hasta</target>
+      </trans-unit>
+      <trans-unit id="tra21" resname="Traveller's name">
+        <source>Traveller's name</source>
+        <target>Viajero</target>
+      </trans-unit>
+      <trans-unit id="tra22" resname="This value should be less  or equal than Arrival Date.">
+        <source>Traveller's name</source>
+        <target>Viajero</target>
       </trans-unit>
 
       <trans-unit id="tri0" resname='New Trip Destination'>

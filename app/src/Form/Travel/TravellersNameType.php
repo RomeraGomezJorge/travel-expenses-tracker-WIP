@@ -3,9 +3,7 @@
   namespace App\Form\EmployeesType;
   
   use App\Entity\Employee;
-  use App\Entity\Travel;
-  use App\Entity\TripDestination;
-  use Doctrine\ORM\EntityManagerInterface;
+  use App\Entity\TravellersName;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -17,7 +15,7 @@
   use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   
-  class EmployeesType extends AbstractType {
+  class TravellersNameType extends AbstractType {
   
 
     public function buildForm(
@@ -25,14 +23,28 @@
       array $options
     ): void {
       $builder
-              ->add('employees', EntityType::class, [
+              ->add('employee', EntityType::class, [
                 'class' => Employee::class,
-                'multiple' => TRUE,
+                'multiple' => FALSE,
                 'required' => TRUE,
                 'attr' => [
                   'placeholder' => '- Required -',
+                  'class' => 'row col-12',
+                  'autofocus' => 'autofocus',
                 ],
-                'label' => FALSE
+                'label' => 'Employee',
+                'label_attr' => ['class' => 'row col-12'],
+              ])
+              ->add('replacement', EntityType::class, [
+                'class' => Employee::class,
+                'multiple' => FALSE,
+                'required' => FALSE,
+                'attr' => [
+                  'placeholder' => '- Optional -',
+                  'class' => 'row col-12'
+                ],
+                'label' => 'Replacement',
+                'label_attr' => ['class' => 'row col-12'],
               ]);
     }
   
@@ -42,7 +54,7 @@
     public function configureOptions(OptionsResolver $resolver)
     {
       $resolver->setDefaults(array(
-        'data_class' => Travel::class
+        'data_class' => TravellersName::class
       ));
     }
   }

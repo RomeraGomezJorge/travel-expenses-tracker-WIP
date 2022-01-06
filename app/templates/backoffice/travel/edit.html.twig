@@ -7,11 +7,17 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            $('select').select2({closeOnSelect: false,placeholder: '- '+ Translator.trans('Required')+ ' -'})
-        })
-    </script>
     <script src="{{ asset('assets/js/plugin/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset("assets/js/blog/travel/form/calculate.travel.expenses.js") }}"></script>
+    <script src="{{ asset("assets/js/blog/travel/form/add.another.employee.js") }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select[name*="employee"]').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});
+            $('select[name*="replacement"] ').select2({placeholder: '- ' + Translator.trans('Optional') + ' -'});
+            $('[name="travel[departureDate]"]').on('focusout',function () {
+                $('[name="travel[arrivalDate]"]').val($('[name="travel[departureDate]"]').val());
+            })
+        })
+    </script>
+
 {% endblock  %}

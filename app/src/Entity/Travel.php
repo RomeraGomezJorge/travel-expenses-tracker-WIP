@@ -1,12 +1,13 @@
 <?php
   
   namespace App\Entity;
-  
+
   use Doctrine\Common\Collections\ArrayCollection;
   use Doctrine\Common\Collections\Collection;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
-  
+
+
   /**
    * Travel
    *
@@ -28,8 +29,7 @@
      * @var \DateTime
      *
      * @ORM\Column(name="departure_date", type="date", nullable=false)
-     * @Assert\LessThan(propertyPath="arrivalDate",
-     *    message="This value should be less than Arrival Date.")
+     * @Assert\LessThanOrEqual(propertyPath="arrivalDate")
      */
     private $departureDate;
     
@@ -38,8 +38,7 @@
      *
      * @ORM\Column(name="arrival_date", type="date", nullable=true)
      * @Assert\LessThanOrEqual("today UTC")
-     * @Assert\GreaterThan(propertyPath="departureDate",
-     *    message="This value should be greater than Departure Date.")
+     * @Assert\GreaterThanOrEqual(propertyPath="departureDate")
      */
     private $arrivalDate;
     
@@ -60,14 +59,10 @@
 
     
     /**
-     * @ORM\ManyToMany(targetEntity="Employee", inversedBy="travels", cascade={"persist"})
-     * @ORM\JoinTable(name="employee_travel",
-     *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="employee_id", referencedColumnName="id", onDelete="CASCADE")}
-     *      )
+     * @ORM\OneToMany(targetEntity="TravellersName", mappedBy="travel",cascade={"all"})
      */
-    private $employees;
-
+    private $travellersNames;
+    
     
     /**
      * @ORM\ManyToMany(targetEntity="TripDestination", inversedBy="travels", cascade={"persist"})
@@ -79,7 +74,7 @@
     private $tripDestinations;
     
     public function __construct() {
-      $this->employees = new ArrayCollection();
+      $this->travellersNames = new ArrayCollection();
       $this->tripDestinations = new ArrayCollection();
     }
     
@@ -128,22 +123,23 @@
     }
     
     /**
-     * @return ArrayCollection|employee[]
+     * @return ArrayCollection|TravellersName[]
      */
-    public function getEmployees(): Collection {
-      return $this->employees;
+    public function getTravellersNames(): Collection {
+      return $this->travellersNames;
     }
     
-    public function addEmployee(Employee $employee) {
-      if (!$this->employees->contains($employee)) {
-        $this->employees[] = $employee;
+    public function addTravellersName(TravellersName $travellersName) {
+      if (!$this->travellersNames->contains($travellersName)) {
+        $travellersName->setTravel($this);
+        $this->travellersNames[] = $travellersName;
       }
       return $this;
     }
     
-    public function removeEmployee(Employee $employee): self {
-      if ($this->employees->contains($employee)) {
-        $this->employees->removeElement($employee);
+    public function removeTravellersName(TravellersName $travellersName): self {
+      if ($this->travellersNames->contains($travellersName)) {
+        $this->travellersNames->removeElement($travellersName);
       }
       
       return $this;

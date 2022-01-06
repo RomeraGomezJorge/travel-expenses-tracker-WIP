@@ -1,13 +1,16 @@
 <?php
   
-  namespace App\Form;
+  namespace App\Form\Travel;
   
   use App\Entity\Employee;
   use App\Entity\Travel;
   use App\Entity\TripDestination;
+  use App\Form\EmployeesType\TravellersNameType;
   use Doctrine\ORM\EntityManagerInterface;
+  use phpDocumentor\Reflection\Types\False_;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
   use Symfony\Component\Form\AbstractType;
+  use Symfony\Component\Form\Extension\Core\Type\CollectionType;
   use Symfony\Component\Form\Extension\Core\Type\DateType;
   use Symfony\Component\Form\Extension\Core\Type\IntegerType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,13 +30,26 @@
       array $options
     ): void {
       $builder
-
-        ->add('resolution', IntegerType::class, [
-          'required' => FALSE,
+        ->add('travellersNames',CollectionType::class,[
+          'entry_type' => TravellersNameType::class,
+          'entry_options' => ['label' => FALSE],
+          'allow_add' => TRUE,
+          'prototype' => TRUE,
+          'by_reference' => FALSE,
+          'label'=> FALSE
+  
+        ])
+        ->add('tripDestinations', EntityType::class, [
+          'class' => TripDestination::class,
+          'multiple' => TRUE,
+          'required' => TRUE,
           'attr' => [
-            'placeholder' => '- Optional -',
+            'placeholder' => '- Required -',
           ],
-          'label' => 'Resolution',
+          'choice_attr' => function (TripDestination $product, $key, $index) {
+            return ['data-cost' => $product->getLocationCosts()->getCost() ];
+          },
+          'label' => 'Destinations',
         ])
         ->add('departureDate', DateType::class, [
           'widget' => 'single_text',
@@ -51,27 +67,12 @@
           ],
           'label' => 'Arrival Date',
         ])
-
-        ->add('employees', EntityType::class, [
-          'class' => Employee::class,
-          'multiple' => TRUE,
-          'required' => TRUE,
+        ->add('resolution', IntegerType::class, [
+          'required' => FALSE,
           'attr' => [
-            'placeholder' => '- Required -',
+            'placeholder' => '- Optional -',
           ],
-          'label' => 'Employees'
-        ])
-        ->add('tripDestinations', EntityType::class, [
-          'class' => TripDestination::class,
-          'multiple' => TRUE,
-          'required' => TRUE,
-          'attr' => [
-            'placeholder' => '- Required -',
-          ],
-          'choice_attr' => function (TripDestination $product, $key, $index) {
-            return ['data-cost' => $product->getLocationCosts()->getCost() ];
-          },
-          'label' => 'Destinations',
+          'label' => 'Resolution',
         ])
         ->add('expenses', IntegerType::class, [
           'required' => TRUE,

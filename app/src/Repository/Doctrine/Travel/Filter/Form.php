@@ -58,10 +58,10 @@
           ],
           'label' => 'Resolution',
         ])
-        ->add('employee', EntityType::class, [
+        ->add('travellersNames', EntityType::class, [
           'class' => Employee::class,
           'required' => FALSE,
-          'label' => 'Employees ( * )'
+          'label' => 'Travellers Name'
         ])
         ->add('tripDestination', EntityType::class, [
           'class' => TripDestination::class,
