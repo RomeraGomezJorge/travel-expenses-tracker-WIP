@@ -3,13 +3,13 @@ FROM composer:2 as composer_stage
 RUN rm -rf /var/www && mkdir -p /var/www/
 WORKDIR /var/www/
 
-#COPY /app/composer.json /app/composer.lock ./
+COPY /app/composer.json /app/composer.lock ./
 
 # This are production settings, I'm running with 'no-dev', adjust accordingly
 # if you need it
-#RUN composer install --ignore-platform-reqs --prefer-dist --no-scripts --no-progress --no-interaction --no-dev --no-autoloader
+RUN composer install --no-scripts --no-progress --no-interaction --no-dev --no-autoloader
 
-#RUN composer dump-autoload --optimize --apcu --no-dev
+RUN composer dump-autoload --optimize --apcu --no-dev
 
 FROM php:7.4-fpm
 
@@ -41,8 +41,3 @@ COPY docker/php-fpm/error_reporting.ini /usr/local/etc/php/conf.d/error_reportin
 COPY --from=composer_stage /var/www/ /var/www/
 
 COPY app ./
-
-#RUN composer install --no-dev --no-interaction --no-autoloader --no-scripts
-
-
-
