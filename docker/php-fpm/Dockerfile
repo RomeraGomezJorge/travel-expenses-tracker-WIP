@@ -1,16 +1,3 @@
-FROM composer:2 as composer_stage
-
-RUN rm -rf /var/www && mkdir -p /var/www/
-WORKDIR /var/www/
-
-COPY /app/composer.json /app/composer.lock ./
-
-# This are production settings, I'm running with 'no-dev', adjust accordingly
-# if you need it
-RUN composer install --no-scripts --no-progress --no-interaction --no-dev --no-autoloader
-
-RUN composer dump-autoload --optimize --apcu --no-dev
-
 FROM php:7.4-fpm
 
 # Install packages and PHP extensions
@@ -37,7 +24,5 @@ WORKDIR /var/www
 # Config XDEBUG
 COPY docker/php-fpm/xdebug.ini  /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 COPY docker/php-fpm/error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
-
-COPY --from=composer_stage /var/www/ /var/www/
 
 COPY app ./

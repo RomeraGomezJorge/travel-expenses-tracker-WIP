@@ -2,6 +2,7 @@ version: '3'
 
 services:
   database:
+    container_name: database
     build:
       context: ./docker/database
     environment:
@@ -15,6 +16,7 @@ services:
       - ./docker/database/data:/var/lib/mysql
 
   php-fpm:
+    container_name: php-fpm
     build:
       dockerfile: ./docker/php-fpm/Dockerfile
       context: .
@@ -35,6 +37,7 @@ services:
       - database
 
   nginx:
+    container_name: nginx
     build:
       context: ./docker/nginx
     ports:
@@ -47,8 +50,8 @@ services:
       - php-fpm
 
   phpmyadmin:
-    image: phpmyadmin
     container_name: phpmyadmin
+    image: phpmyadmin
     environment:
       - PMA_HOST=database
       - PMA_USER=root
