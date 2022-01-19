@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: database
--- Tiempo de generación: 06-01-2022 a las 15:35:58
+-- Tiempo de generación: 19-01-2022 a las 21:42:11
 -- Versión del servidor: 8.0.27
--- Versión de PHP: 7.4.26
+-- Versión de PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -119,26 +119,37 @@ INSERT INTO `location_costs` (`id`, `location`, `cost`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `resolution`
+--
+
+CREATE TABLE `resolution` (
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `travel_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `travel`
 --
 
 CREATE TABLE `travel` (
   `id` int NOT NULL,
   `departure_date` date NOT NULL,
-  `arrival_date` date DEFAULT NULL,
-  `travel_expenses` decimal(10,0) DEFAULT NULL,
-  `resolution_number` int DEFAULT NULL
+  `arrival_date` date NOT NULL,
+  `travel_expenses` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `travel`
 --
 
-INSERT INTO `travel` (`id`, `departure_date`, `arrival_date`, `travel_expenses`, `resolution_number`) VALUES
-(38, '2019-02-01', '2019-02-01', '800', 35),
-(39, '2019-02-08', '2019-02-08', '800', 34),
-(40, '2019-02-08', '2019-02-08', '800', 33),
-(41, '2019-02-14', '2019-02-14', '800', 32);
+INSERT INTO `travel` (`id`, `departure_date`, `arrival_date`, `travel_expenses`) VALUES
+(80, '1212-12-19', '1212-12-19', '1500'),
+(81, '1212-12-19', '1212-12-19', '1500');
 
 -- --------------------------------------------------------
 
@@ -158,13 +169,8 @@ CREATE TABLE `travellers_name` (
 --
 
 INSERT INTO `travellers_name` (`id`, `employee`, `replacement`, `travel`) VALUES
-(14, 332, 364, 38),
-(15, 299, NULL, 39),
-(16, 317, 353, 40),
-(17, 343, 370, 41),
-(18, 332, 364, 40),
-(19, 335, 375, 41),
-(20, 303, NULL, 41);
+(59, 299, NULL, 80),
+(60, 299, NULL, 81);
 
 -- --------------------------------------------------------
 
@@ -209,7 +215,44 @@ INSERT INTO `travel_destination` (`trip_destination_id`, `travel_id`, `id`) VALU
 (247, 38, 24),
 (241, 39, 25),
 (245, 40, 26),
-(242, 41, 27);
+(242, 41, 27),
+(223, 42, 28),
+(224, 42, 29),
+(223, 43, 30),
+(224, 44, 31),
+(224, 45, 32),
+(224, 46, 33),
+(225, 46, 34),
+(223, 47, 35),
+(223, 48, 36),
+(223, 51, 37),
+(223, 52, 38),
+(223, 55, 39),
+(223, 57, 40),
+(223, 59, 41),
+(223, 61, 42),
+(223, 62, 43),
+(223, 63, 44),
+(223, 66, 45),
+(223, 67, 46),
+(223, 68, 47),
+(223, 69, 48),
+(223, 70, 49),
+(223, 71, 50),
+(223, 72, 51),
+(224, 73, 52),
+(223, 74, 53),
+(223, 75, 54),
+(223, 76, 55),
+(223, 77, 56),
+(223, 78, 57),
+(223, 79, 58),
+(228, 80, 59),
+(223, 81, 60),
+(223, 82, 61),
+(223, 84, 62),
+(223, 86, 63),
+(223, 87, 64);
 
 -- --------------------------------------------------------
 
@@ -281,6 +324,14 @@ ALTER TABLE `location_costs`
   ADD UNIQUE KEY `location` (`location`);
 
 --
+-- Indices de la tabla `resolution`
+--
+ALTER TABLE `resolution`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `travel_id` (`travel_id`),
+  ADD KEY `travel_fk` (`travel_id`);
+
+--
 -- Indices de la tabla `travel`
 --
 ALTER TABLE `travel`
@@ -325,25 +376,31 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT de la tabla `location_costs`
 --
 ALTER TABLE `location_costs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `resolution`
+--
+ALTER TABLE `resolution`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT de la tabla `travel`
 --
 ALTER TABLE `travel`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT de la tabla `travellers_name`
 --
 ALTER TABLE `travellers_name`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `travel_destination`
 --
 ALTER TABLE `travel_destination`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `trip_destination`
