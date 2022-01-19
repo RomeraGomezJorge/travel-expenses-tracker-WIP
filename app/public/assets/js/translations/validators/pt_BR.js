@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Este valor deve satisfazer pelo menos uma das seguintes restri\u00e7\u00f5es:", "validators", "pt_BR");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Cada elemento desta cole\u00e7\u00e3o deve satisfazer seu pr\u00f3prio grupo de restri\u00e7\u00f5es.", "validators", "pt_BR");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Este valor n\u00e3o \u00e9 um N\u00famero de Identifica\u00e7\u00e3o de T\u00edtulos Internacionais (ISIN) v\u00e1lido.", "validators", "pt_BR");
+t.add("This value should be a valid expression.", "Este valor deve ser uma express\u00e3o v\u00e1lida.", "validators", "pt_BR");
+t.add("This value is not a valid CSS color.", "Este valor n\u00e3o \u00e9 uma cor CSS v\u00e1lida.", "validators", "pt_BR");
+t.add("This value is not a valid CIDR notation.", "Este valor n\u00e3o \u00e9 uma nota\u00e7\u00e3o CIDR v\u00e1lida.", "validators", "pt_BR");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "O valor da m\u00e1scara de rede deve estar entre {{ min }} e {{ max }}.", "validators", "pt_BR");
 t.add("This form should not contain extra fields.", "Este formul\u00e1rio n\u00e3o deve conter campos adicionais.", "validators", "pt_BR");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "O arquivo enviado \u00e9 muito grande. Por favor, tente enviar um arquivo menor.", "validators", "pt_BR");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "O token CSRF \u00e9 inv\u00e1lido. Por favor, tente reenviar o formul\u00e1rio.", "validators", "pt_BR");

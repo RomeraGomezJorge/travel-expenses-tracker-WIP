@@ -17,4 +17,6 @@ t.add("Account is disabled.", "A conta est\u00e1 deshabilitada.", "security", "g
 t.add("Account is locked.", "A conta est\u00e1 bloqueada.", "security", "gl");
 t.add("Too many failed login attempts, please try again later.", "Demasiados intentos de inicio de sesi\u00f3n fallados. T\u00e9ntao de novo m\u00e1is tarde.", "security", "gl");
 t.add("Invalid or expired login link.", "Ligaz\u00f3n de inicio de sesi\u00f3n non v\u00e1lida ou caducada.", "security", "gl");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "Demasiados intentos de inicio de sesi\u00f3n errados, por favor, t\u00e9nteo de novo en %minutes% minuto.", "security", "gl");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "Demasiados intentos de inicio de sesi\u00f3n errados, por favor, t\u00e9nteo de novo en %minutes% minutos.", "security", "gl");
 })(Translator);

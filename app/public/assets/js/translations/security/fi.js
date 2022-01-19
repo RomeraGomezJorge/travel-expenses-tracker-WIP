@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Tili on poistettu k\u00e4yt\u00f6st\u00e4.", "sec
 t.add("Account is locked.", "Tili on lukittu.", "security", "fi");
 t.add("Too many failed login attempts, please try again later.", "Liian monta ep\u00e4onnistunutta kirjautumisyrityst\u00e4, yrit\u00e4 my\u00f6hemmin uudelleen.", "security", "fi");
 t.add("Invalid or expired login link.", "Virheellinen tai vanhentunut kirjautumislinkki.", "security", "fi");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "Liian monta ep\u00e4onnistunutta kirjautumisyrityst\u00e4, yrit\u00e4 uudelleen %minutes% minuutin kuluttua.", "security", "fi");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "Liian monta ep\u00e4onnistunutta kirjautumisyrityst\u00e4, yrit\u00e4 uudelleen %minutes% minuutin kuluttua.", "security", "fi");
 })(Translator);

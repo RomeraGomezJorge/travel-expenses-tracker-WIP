@@ -93,9 +93,13 @@ t.add("This password has been leaked in a data breach, it must not be used. Plea
 t.add("This value should be between {{ min }} and {{ max }}.", "V\u00e6rdien skal v\u00e6re mellem {{ min }} og {{ max }}.", "validators", "da");
 t.add("This value is not a valid hostname.", "V\u00e6rdien er ikke et gyldigt v\u00e6rtsnavn.", "validators", "da");
 t.add("The number of elements in this collection should be a multiple of {{ compared_value }}.", "Antallet af elementer i denne samling skal v\u00e6re en multiplikation af {{ compared_value }}.", "validators", "da");
-t.add("This value should satisfy at least one of the following constraints:", "V\u00e6rdien skal overholde mindst \u00e9n af f\u00f8lgende krav::", "validators", "da");
+t.add("This value should satisfy at least one of the following constraints:", "V\u00e6rdien skal overholde mindst \u00e9n af f\u00f8lgende krav:", "validators", "da");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Hvert element i denne samling skal overholde dens egne krav.", "validators", "da");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "V\u00e6rdien er ikke et gyldig International Securities Identification Number (ISIN).", "validators", "da");
+t.add("This value should be a valid expression.", "V\u00e6rdien skal v\u00e6re et gyldigt udtryk.", "validators", "da");
+t.add("This value is not a valid CSS color.", "V\u00e6rdien skal v\u00e6re en gyldig CSS farve.", "validators", "da");
+t.add("This value is not a valid CIDR notation.", "V\u00e6rdien er ikke en gyldig CIDR notation.", "validators", "da");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "V\u00e6rdien af netmasken skal v\u00e6re mellem {{ min }} og {{ max }}.", "validators", "da");
 t.add("This form should not contain extra fields.", "Feltgruppen m\u00e5 ikke indeholde ekstra felter.", "validators", "da");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Den uploadede fil var for stor. Upload venligst en mindre fil.", "validators", "da");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF-token er ugyldig. Pr\u00f8v venligst at genindsende.", "validators", "da");
@@ -125,7 +129,7 @@ t.add("Please enter a valid URL.", "Indtast venligst en gyldig URL.", "validator
 t.add("Please enter a valid search term.", "Indtast venligst et gyldigt s\u00f8geord.", "validators", "da");
 t.add("Please provide a valid phone number.", "Giv venligst et gyldigt telefonnummer.", "validators", "da");
 t.add("The checkbox has an invalid value.", "Checkboxen har en ugyldigt v\u00e6rdi.", "validators", "da");
-t.add("Please enter a valid email address.", "Indtast venligst en gyldig emailaddresse.", "validators", "da");
+t.add("Please enter a valid email address.", "Indtast venligst en gyldig e-mailadresse.", "validators", "da");
 t.add("Please select a valid option.", "V\u00e6lg venligst en gyldig mulighed.", "validators", "da");
 t.add("Please select a valid range.", "V\u00e6lg venligst et gyldigt interval .", "validators", "da");
 t.add("Please enter a valid week.", "Indtast venligst en gyldig uge.", "validators", "da");

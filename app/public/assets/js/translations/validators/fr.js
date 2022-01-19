@@ -96,7 +96,11 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Cette valeur doit satisfaire \u00e0 au moins une des contraintes suivantes :", "validators", "fr");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Chaque \u00e9l\u00e9ment de cette collection doit satisfaire \u00e0 son propre jeu de contraintes.", "validators", "fr");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Cette valeur n'est pas un code international de s\u00e9curit\u00e9 valide (ISIN).", "validators", "fr");
-t.add("This form should not contain extra fields.", "Ce formulaire ne doit pas contenir des champs suppl\u00e9mentaires.", "validators", "fr");
+t.add("This value should be a valid expression.", "Cette valeur doit \u00eatre une expression valide.", "validators", "fr");
+t.add("This value is not a valid CSS color.", "Cette valeur n'est pas une couleur CSS valide.", "validators", "fr");
+t.add("This value is not a valid CIDR notation.", "Cette valeur n'est pas une notation CIDR valide.", "validators", "fr");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "La valeur du masque de r\u00e9seau doit \u00eatre comprise entre {{ min }} et {{ max }}.", "validators", "fr");
+t.add("This form should not contain extra fields.", "Ce formulaire ne doit pas contenir de champs suppl\u00e9mentaires.", "validators", "fr");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Le fichier t\u00e9l\u00e9charg\u00e9 est trop volumineux. Merci d'essayer d'envoyer un fichier plus petit.", "validators", "fr");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "Le jeton CSRF est invalide. Veuillez renvoyer le formulaire.", "validators", "fr");
 t.add("This value is not a valid HTML5 color.", "Cette valeur n'est pas une couleur HTML5 valide.", "validators", "fr");

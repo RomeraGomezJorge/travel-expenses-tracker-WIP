@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Ennek az \u00e9rt\u00e9knek meg kell felelni legal\u00e1bb egynek a k\u00f6vetkez\u0151 felt\u00e9telek k\u00f6z\u00fcl:", "validators", "hu");
 t.add("Each element of this collection should satisfy its own set of constraints.", "A gy\u0171jtem\u00e9ny minden elem\u00e9nek meg kell felelni a saj\u00e1t felt\u00e9teleinek.", "validators", "hu");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Ez az \u00e9rt\u00e9k nem egy \u00e9rv\u00e9nyes nemzetk\u00f6zi \u00e9rt\u00e9kpap\u00edr-azonos\u00edt\u00f3 sz\u00e1m (ISIN).", "validators", "hu");
+t.add("This value should be a valid expression.", "Ennek az \u00e9rt\u00e9knek \u00e9rv\u00e9nyes kifejez\u00e9snek kell lennie.", "validators", "hu");
+t.add("This value is not a valid CSS color.", "Ez az \u00e9rt\u00e9k nem egy \u00e9rv\u00e9nyes CSS sz\u00edn.", "validators", "hu");
+t.add("This value is not a valid CIDR notation.", "Ez az \u00e9rt\u00e9k nem egy \u00e9rv\u00e9nyes CIDR jel\u00f6l\u00e9s.", "validators", "hu");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Ennek a netmask \u00e9rt\u00e9knek {{ min }} \u00e9s {{ max }} k\u00f6z\u00f6tt kell lennie.", "validators", "hu");
 t.add("This form should not contain extra fields.", "Ez a mez\u0151csoport nem tartalmazhat extra mez\u0151ket.", "validators", "hu");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "A felt\u00f6lt\u00f6tt f\u00e1jl t\u00fal nagy. K\u00e9rem, pr\u00f3b\u00e1ljon egy kisebb f\u00e1jlt felt\u00f6lteni.", "validators", "hu");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "\u00c9rv\u00e9nytelen CSRF token. K\u00e9rem, pr\u00f3b\u00e1lja \u00fajra elk\u00fcldeni az \u0171rlapot.", "validators", "hu");

@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Akkunt o'chirilgan.", "security", "uz");
 t.add("Account is locked.", "Akkunt bloklangan.", "security", "uz");
 t.add("Too many failed login attempts, please try again later.", "Kirish urinishlari muvaffaqiyatsiz tugadi, keyinroq qayta urinib ko'ring.", "security", "uz");
 t.add("Invalid or expired login link.", "Kirish havolasi yaroqsiz yoki muddati tugagan.", "security", "uz");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "Kirish uchun muvaffaqiyatsiz urinishlar, %minutes% daqiqadan so'ng qayta urinib ko'ring.", "security", "uz");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "Kirish uchun muvaffaqiyatsiz urinishlar, %minutes% daqiqadan so'ng qayta urinib ko'ring.", "security", "uz");
 })(Translator);

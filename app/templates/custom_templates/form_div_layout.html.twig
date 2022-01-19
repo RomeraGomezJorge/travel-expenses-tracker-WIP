@@ -1,4 +1,3 @@
-{% use "bootstrap_base_layout.html.twig" %}
 {# Widgets #}
 {%- block button_widget -%}
     {%- if label is empty -%}
@@ -61,7 +60,12 @@
         {# Attribute "required" is not supported #}
         {%- set required = false -%}
     {% endif %}
-    {{- parent() -}}
+    {%- set type = type|default('text') -%}
+    {%- if type == 'range' or type == 'color' -%}
+        {# Attribute "required" is not supported #}
+        {%- set required = false -%}
+    {%- endif -%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
 {%- endblock form_widget_simple %}
 
 {# Labels #}

@@ -89,7 +89,6 @@ t.add("This value should be either positive or zero.", "Hierdie waarde moet posi
 t.add("This value should be negative.", "Hierdie waarde moet negatief wees.", "validators", "af");
 t.add("This value should be either negative or zero.", "Hierdie waarde moet negatief of nul wees.", "validators", "af");
 t.add("This value is not a valid timezone.", "Hierdie waarde is nie 'n geldige tydsone nie.", "validators", "af");
-t.add("This password has been leaked in a data breach, it must not be used. Please use another password.", "This password has been leaked in a data breach, it must not be used. Please use another password.", "validators", "af");
 t.add("This value should be between {{ min }} and {{ max }}.", "Hierdie waarde moet tussen {{ min }} en {{ max }} wees.", "validators", "af");
 t.add("This value is not a valid hostname.", "Hierdie waarde is nie 'n geldige gasheernaam nie.", "validators", "af");
 t.add("The number of elements in this collection should be a multiple of {{ compared_value }}.", "Die hoeveelheid elemente in hierdie versameling moet 'n meelvoud van {{ compared_value }} wees.", "validators", "af");

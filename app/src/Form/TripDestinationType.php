@@ -3,6 +3,7 @@
   namespace App\Form;
   
   
+  use App\Entity\LocationCosts;
   use App\Entity\TripDestination;
   use Doctrine\ORM\EntityManagerInterface;
   use Symfony\Component\Form\AbstractType;
@@ -35,8 +36,8 @@
         ])
         ->add('locationCosts', ChoiceType::class, [
           'expanded' => 'radio',
-          'choices' => $this->em->getRepository("App:LocationCosts")->findAll(),
-          'choice_label' => 'location',
+          'choices' => $this->em->getRepository(LocationCosts::class)->findAll(),
+          'choice_label' => 'locationAndCost',
           'label' => 'Location Costs',
         ])
         ->add('save', SubmitType::class, [

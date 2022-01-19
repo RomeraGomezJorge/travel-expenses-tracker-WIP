@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Nalog je onemogu\u0107en.", "security", "bs");
 t.add("Account is locked.", "Nalog je zaklju\u010dan.", "security", "bs");
 t.add("Too many failed login attempts, please try again later.", "Previ\u0161e neuspje\u0161nih poku\u0161aja prijavljivanja, molim poku\u0161ajte ponovo kasnije.", "security", "bs");
 t.add("Invalid or expired login link.", "Link za prijavljivanje je istekao ili je neispravan.", "security", "bs");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "Previ\u0161e neuspjelih poku\u0161aja prijave, poku\u0161ajte ponovo za %minutes% minuta.", "security", "bs");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "Previ\u0161e neuspjelih poku\u0161aja prijave, poku\u0161ajte ponovo za %minutes% minuta.", "security", "bs");
 })(Translator);

@@ -96,10 +96,14 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Ova vrijednost mora zadovoljiti jedan od sljede\u0107ih ograni\u010denja:", "validators", "hr");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Svaki element ove kolekcije mora zadovoljiti vlastiti skup ograni\u010denja.", "validators", "hr");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Ova vrijednost nije ispravan me\u0111unarodni identifikacijski broj vrijednosnih papira (ISIN).", "validators", "hr");
+t.add("This value should be a valid expression.", "Ova vrijednost mora biti valjani izraz.", "validators", "hr");
+t.add("This value is not a valid CSS color.", "Ova vrijednost nije va\u017ee\u0107a CSS boja.", "validators", "hr");
+t.add("This value is not a valid CIDR notation.", "Ova vrijednost nije valjana CIDR notacija.", "validators", "hr");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Vrijednost mre\u017ene maske trebala bi biti izme\u0111u {{ min }} i {{ max }}.", "validators", "hr");
 t.add("This form should not contain extra fields.", "Ovaj obrazac ne smije sadr\u017eavati dodatna polja.", "validators", "hr");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Prenesena datoteka je prevelika. Molim poku\u0161ajte prenijeti manju datoteku.", "validators", "hr");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF vrijednost nije ispravna. Poku\u0161ajte ponovo poslati obrazac.", "validators", "hr");
-t.add("This value is not a valid HTML5 color.", "Ova vrijednost nije ispravna HTML5 boja.", "validators", "hr");
+t.add("This value is not a valid HTML5 color.", "Ova vrijednost nije va\u017ee\u0107a HTML5 boja.", "validators", "hr");
 t.add("Please enter a valid birthdate.", "Molim upi\u0161ite ispravan datum ro\u0111enja.", "validators", "hr");
 t.add("The selected choice is invalid.", "Odabrani izbor nije ispravan.", "validators", "hr");
 t.add("The collection is invalid.", "Kolekcija nije ispravna.", "validators", "hr");

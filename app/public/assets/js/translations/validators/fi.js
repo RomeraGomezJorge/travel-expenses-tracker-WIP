@@ -75,7 +75,7 @@ t.add("The image is square ({{ width }}x{{ height }}px). Square images are not a
 t.add("The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.", "Kuva on vaakasuuntainen ({{ width }}x{{ height }}px). Vaakasuuntaiset kuvat eiv\u00e4t ole sallittuja.", "validators", "fi");
 t.add("The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.", "Kuva on pystysuuntainen ({{ width }}x{{ height }}px). Pystysuuntaiset kuvat eiv\u00e4t ole sallittuja.", "validators", "fi");
 t.add("An empty file is not allowed.", "Tyhj\u00e4 tiedosto ei ole sallittu.", "validators", "fi");
-t.add("The host could not be resolved.", "The host could not be resolved.", "validators", "fi");
+t.add("The host could not be resolved.", "Palvelimeen ei saatu yhteytt\u00e4.", "validators", "fi");
 t.add("This value does not match the expected {{ charset }} charset.", "Arvo ei vastaa odotettua merkist\u00f6\u00e4 {{ charset }}.", "validators", "fi");
 t.add("This is not a valid Business Identifier Code (BIC).", "Arvo ei ole kelvollinen yritystunnus (BIC).", "validators", "fi");
 t.add("Error", "Virhe", "validators", "fi");
@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "T\u00e4m\u00e4n arvon tulee l\u00e4p\u00e4ist\u00e4 v\u00e4hint\u00e4\u00e4n yksi seuraavista tarkistuksista:", "validators", "fi");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Ryhm\u00e4n jokaisen elementin tulee l\u00e4p\u00e4ist\u00e4 omat tarkistuksensa.", "validators", "fi");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "T\u00e4m\u00e4 arvo ei ole kelvollinen ISIN-koodi (International Securities Identification Number).", "validators", "fi");
+t.add("This value should be a valid expression.", "T\u00e4m\u00e4n arvon on oltava kelvollinen lauseke.", "validators", "fi");
+t.add("This value is not a valid CSS color.", "T\u00e4m\u00e4 arvo ei ole kelvollinen CSS-v\u00e4rim\u00e4\u00e4ritys.", "validators", "fi");
+t.add("This value is not a valid CIDR notation.", "T\u00e4m\u00e4 arvo ei ole kelvollinen CIDR-merkint\u00e4.", "validators", "fi");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Verkkomaskille annetun arvon tulisi olla {{ min }} ja {{ max }} v\u00e4lill\u00e4.", "validators", "fi");
 t.add("This form should not contain extra fields.", "T\u00e4m\u00e4 lomake ei voi sis\u00e4lt\u00e4\u00e4 ylim\u00e4\u00e4r\u00e4isi\u00e4 kentti\u00e4.", "validators", "fi");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Ladattu tiedosto on liian iso. Ole hyv\u00e4 ja lataa pienempi tiedosto.", "validators", "fi");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF-tarkiste on virheellinen. Ole hyv\u00e4 ja yrit\u00e4 l\u00e4hett\u00e4\u00e4 lomake uudestaan.", "validators", "fi");

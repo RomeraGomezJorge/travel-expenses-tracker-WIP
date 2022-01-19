@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Nilai ini harus memenuhi setidaknya satu dari batasan berikut:", "validators", "id");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Setiap elemen koleksi ini harus memenuhi batasannya sendiri.", "validators", "id");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Nilai ini bukan merupakan International Securities Identification Number (ISIN) yang sah.", "validators", "id");
+t.add("This value should be a valid expression.", "Nilai ini harus berupa ekspresi yang sah.", "validators", "id");
+t.add("This value is not a valid CSS color.", "Nilai ini bukan merupakan warna CSS yang sah.", "validators", "id");
+t.add("This value is not a valid CIDR notation.", "Nilai ini bukan merupakan notasi CIDR yang sah.", "validators", "id");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Nilai dari netmask harus berada diantara {{ min }} dan {{ max }}.", "validators", "id");
 t.add("This form should not contain extra fields.", "Gabungan kolom tidak boleh mengandung kolom tambahan.", "validators", "id");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Berkas yang di unggah terlalu besar. Silahkan coba unggah berkas yang lebih kecil.", "validators", "id");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF-Token tidak sah. Silahkan coba kirim ulang formulir.", "validators", "id");

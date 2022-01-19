@@ -32,11 +32,11 @@ t.add("The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}."
 t.add("The file is too large.", "Fayl hajmi katta.", "validators", "uz");
 t.add("The file could not be uploaded.", "Faylni yuklab bo'lmadi.", "validators", "uz");
 t.add("This value should be a valid number.", "Qiymat raqam bo'lishi kerak.", "validators", "uz");
-t.add("This value is not a valid country.", "Mamlakat qiymati noto'g'ri.", "validators", "uz");
 t.add("This file is not a valid image.", "Fayl yaroqli rasm formati emas.", "validators", "uz");
 t.add("This is not a valid IP address.", "Ip manzil noto'g'ri.", "validators", "uz");
 t.add("This value is not a valid language.", "Noto'g'ri til.", "validators", "uz");
 t.add("This value is not a valid locale.", "Ushbu qiymat mahalliy qiymat emas.", "validators", "uz");
+t.add("This value is not a valid country.", "Mamlakat qiymati noto'g'ri.", "validators", "uz");
 t.add("This value is already used.", "Ushbu qiymat allaqachon ishlatilgan.", "validators", "uz");
 t.add("The size of the image could not be detected.", "Rasm o'lchamini aniqlab bo'lmadi.", "validators", "uz");
 t.add("The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.", "Rasm kengligi juda katta ({{ width }}px). Maksimal ruxsat etilgan kenglik {{ max_width }}px.", "validators", "uz");
@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Qiymat quyidagi cheklovlardan kamida bittasiga javob berishi kerak:", "validators", "uz");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Ushbu to'plamdagi har bir narsa o'ziga xos cheklovlarni qondirishi kerak.", "validators", "uz");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Qiymat Qimmatli qog'ozlarning xalqaro identifikatsiya raqami (ISIN) ga mos emas.", "validators", "uz");
+t.add("This value should be a valid expression.", "Ushbu qiymat to'g'ri ifoda bo'lishi kerak.", "validators", "uz");
+t.add("This value is not a valid CSS color.", "Bu qiymat haqiqiy CSS rangi emas.", "validators", "uz");
+t.add("This value is not a valid CIDR notation.", "Qiymat CIDR belgisiga mos kelmaydi.", "validators", "uz");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Tarmoq niqobining qiymati {{ min }} va {{ max }} oralig'ida bo'lishi kerak.", "validators", "uz");
 t.add("This form should not contain extra fields.", "Ushbu fo'rmada qo'shimcha maydonlar bo'lmasligi kerak.", "validators", "uz");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Yuklab olingan fayl juda katta. Iltimos, kichikroq faylni yuklashga harakat qiling.", "validators", "uz");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF qiymati yaroqsiz. Fo'rmani qayta yuborishga harakat qiling.", "validators", "uz");

@@ -96,6 +96,7 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Bu de\u011fer a\u015fa\u011f\u0131daki k\u0131s\u0131tlamalardan birini kar\u015f\u0131lamal\u0131d\u0131r:", "validators", "tr");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Bu gruptaki her \u00f6\u011fe kendi k\u0131s\u0131tlamalar\u0131n\u0131 kar\u015f\u0131lamal\u0131d\u0131r.", "validators", "tr");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Bu de\u011fer ge\u00e7erli bir Uluslararas\u0131 Menkul K\u0131ymetler Kimlik Numaras\u0131 de\u011fil (ISIN).", "validators", "tr");
+t.add("This value should be a valid expression.", "Bu de\u011fer ge\u00e7erli bir ifade olmal\u0131d\u0131r.", "validators", "tr");
 t.add("This form should not contain extra fields.", "Form ekstra alanlar i\u00e7eremez.", "validators", "tr");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Y\u00fcklenen dosya boyutu \u00e7ok y\u00fcksek. L\u00fctfen daha k\u00fc\u00e7\u00fck bir dosya y\u00fcklemeyi deneyin.", "validators", "tr");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF fi\u015fi ge\u00e7ersiz. Formu tekrar g\u00f6ndermeyi deneyin.", "validators", "tr");

@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Konts ir atsp\u0113jots.", "security", "lv");
 t.add("Account is locked.", "Konts ir sl\u0113gts.", "security", "lv");
 t.add("Too many failed login attempts, please try again later.", "P\u0101r\u0101k daudz atteiktu ieejas m\u0113\u0123in\u0101jumu, l\u016bdzu, m\u0113\u0123iniet v\u0113lreiz v\u0113l\u0101k.", "security", "lv");
 t.add("Invalid or expired login link.", "Ieejas saite ir neder\u012bga vai ar\u012b tai ir beidzies der\u012bguma termi\u0146\u0161.", "security", "lv");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "P\u0101r\u0101k daudz nesekm\u012bgu autentifik\u0101cijas m\u0113\u0123in\u0101jumu, l\u016bdzu m\u0113\u0123iniet v\u0113lreiz p\u0113c %minutes% min\u016btes.", "security", "lv");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "P\u0101r\u0101k daudz nesekm\u012bgu autentifik\u0101cijas m\u0113\u0123in\u0101jumu, l\u016bdzu m\u0113\u0123iniet v\u0113lreiz p\u0113c %minutes% min\u016bt\u0113m.", "security", "lv");
 })(Translator);

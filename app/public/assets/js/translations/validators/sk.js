@@ -47,7 +47,7 @@ t.add("This value should be the user's current password.", "T\u00e1to hodnota by
 t.add("This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.", "T\u00e1to hodnota by mala ma\u0165 presne {{ limit }} znak.|T\u00e1to hodnota by mala ma\u0165 presne {{ limit }} znaky.|T\u00e1to hodnota by mala ma\u0165 presne {{ limit }} znakov.", "validators", "sk");
 t.add("The file was only partially uploaded.", "Bola nahran\u00e1 len \u010das\u0165 s\u00faboru.", "validators", "sk");
 t.add("No file was uploaded.", "\u017diadny s\u00fabor nebol nahran\u00fd.", "validators", "sk");
-t.add("No temporary folder was configured in php.ini.", "V php.ini nie je nastaven\u00e1 cesta k adres\u00e1ru pre do\u010dasn\u00e9 s\u00fabory.", "validators", "sk");
+t.add("No temporary folder was configured in php.ini.", "V php.ini nie je nastaven\u00e1 cesta k address\u00e1ru pre do\u010dasn\u00e9 s\u00fabory.", "validators", "sk");
 t.add("Cannot write temporary file to disk.", "Do\u010dasn\u00fd s\u00fabor sa nepodarilo zap\u00edsa\u0165 na disk.", "validators", "sk");
 t.add("A PHP extension caused the upload to fail.", "Roz\u0161\u00edrenie PHP zabr\u00e1nilo nahraniu s\u00faboru.", "validators", "sk");
 t.add("This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.", "T\u00e1to kolekcia by mala obsahova\u0165 aspo\u0148 {{ limit }} prvok alebo viac.|T\u00e1to kolekcia by mala obsahova\u0165 aspo\u0148 {{ limit }} prvky alebo viac.|T\u00e1to kolekcia by mala obsahova\u0165 aspo\u0148 {{ limit }} prvkov alebo viac.", "validators", "sk");
@@ -96,6 +96,8 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "T\u00e1to hodnota mus\u00ed sp\u013a\u0148a\u0165 aspo\u0148 jedno z nasleduj\u00facich obmedzen\u00ed:", "validators", "sk");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Ka\u017ed\u00fd prvok v tejto kolekcii mus\u00ed sp\u013a\u0148a\u0165 svoje vlastn\u00e9 obmedzenia.", "validators", "sk");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "T\u00e1to hodnota nie je platn\u00e9 medzin\u00e1rodn\u00e9 ozna\u010denie cenn\u00e9ho papiera (ISIN).", "validators", "sk");
+t.add("This value should be a valid expression.", "T\u00e1to hodnota by mala by\u0165 platn\u00fdm v\u00fdrazom.", "validators", "sk");
+t.add("This value is not a valid CSS color.", "T\u00e1to hodnota nie je platn\u00e1 CSS farba.", "validators", "sk");
 t.add("This form should not contain extra fields.", "Polia by nemali obsahova\u0165 \u010fal\u0161ie prvky.", "validators", "sk");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Odoslan\u00fd s\u00fabor je pr\u00edli\u0161 ve\u013ek\u00fd. Pros\u00edm odo\u0161lite s\u00fabor s men\u0161ou ve\u013ekos\u0165ou.", "validators", "sk");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF token je neplatn\u00fd. Pros\u00edm sk\u00faste znovu odosla\u0165 formul\u00e1r.", "validators", "sk");

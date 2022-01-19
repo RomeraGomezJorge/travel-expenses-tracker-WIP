@@ -30,10 +30,10 @@
         ->innerJoin('t.travellersNames', 'travellersNames')
         ->innerJoin('t.resolution', 'resolution');
       
-//      if ($filter->resolution) {
-//        $qb->andWhere('t.resolution = :resolution');
-//        $qb->setParameter(':resolution', $filter->resolution);
-//      }
+      if ($filter->resolutionName) {
+        $qb->andWhere($qb->expr()->like('LOWER(resolution.name)', ':resolutionName'));
+        $qb->setParameter(':resolutionName', '%' . mb_strtolower($filter->resolutionName) . '%');
+      }
       
       if ($filter->departureDateFrom) {
         $qb->andWhere($qb->expr()->gt('t.departureDate', ':from'));

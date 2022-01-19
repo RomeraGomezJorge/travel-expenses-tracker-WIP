@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Este valor deber\u00eda satisfacer al menos una de las siguientes restricciones:", "validators", "es");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Cada elemento de esta colecci\u00f3n deber\u00eda satisfacer su propio conjunto de restricciones.", "validators", "es");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Este valor no es un n\u00famero de identificaci\u00f3n internacional de valores (ISIN) v\u00e1lido.", "validators", "es");
+t.add("This value should be a valid expression.", "Este valor deber\u00eda ser una expresi\u00f3n v\u00e1lida.", "validators", "es");
+t.add("This value is not a valid CSS color.", "Este valor no es un color CSS v\u00e1lido.", "validators", "es");
+t.add("This value is not a valid CIDR notation.", "Este valor no es una notaci\u00f3n CIDR v\u00e1lida.", "validators", "es");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "El valor de la m\u00e1scara de red deber\u00eda estar entre {{ min }} y {{ max }}.", "validators", "es");
 t.add("This form should not contain extra fields.", "Este formulario no deber\u00eda contener campos adicionales.", "validators", "es");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "El archivo subido es demasiado grande. Por favor, suba un archivo m\u00e1s peque\u00f1o.", "validators", "es");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "El token CSRF no es v\u00e1lido. Por favor, pruebe a enviar nuevamente el formulario.", "validators", "es");

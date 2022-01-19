@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Dieser Wert sollte eine der folgenden Bedingungen erf\u00fcllen:", "validators", "de");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Jedes Element dieser Sammlung sollte seine eigene Menge an Bedingungen erf\u00fcllen.", "validators", "de");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Dieser Wert ist keine g\u00fcltige Internationale Wertpapierkennnummer (ISIN).", "validators", "de");
+t.add("This value should be a valid expression.", "Dieser Wert sollte eine g\u00fcltige Expression sein.", "validators", "de");
+t.add("This value is not a valid CSS color.", "Dieser Wert ist keine g\u00fcltige CSS-Farbe.", "validators", "de");
+t.add("This value is not a valid CIDR notation.", "Dieser Wert entspricht nicht der CIDR-Notation.", "validators", "de");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Der Wert der Subnetzmaske sollte zwischen {{ min }} und {{ max }} liegen.", "validators", "de");
 t.add("This form should not contain extra fields.", "Dieses Formular sollte keine zus\u00e4tzlichen Felder enthalten.", "validators", "de");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Die hochgeladene Datei ist zu gro\u00df. Versuchen Sie bitte eine kleinere Datei hochzuladen.", "validators", "de");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "Der CSRF-Token ist ung\u00fcltig. Versuchen Sie bitte das Formular erneut zu senden.", "validators", "de");

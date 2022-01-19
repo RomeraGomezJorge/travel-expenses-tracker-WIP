@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Aquest valor ha de satisfer almenys una de les restriccions seg\u00fcents:", "validators", "ca");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Cada element d'aquesta col\u00b7lecci\u00f3 hauria de satisfer el seu propi conjunt de restriccions.", "validators", "ca");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Aquest valor no \u00e9s un n\u00famero d'identificaci\u00f3 de valors internacionals (ISIN) v\u00e0lid.", "validators", "ca");
+t.add("This value should be a valid expression.", "Aquest valor hauria de ser una expressi\u00f3 v\u00e0lida.", "validators", "ca");
+t.add("This value is not a valid CSS color.", "Aquest valor no \u00e9s un color CSS v\u00e0lid.", "validators", "ca");
+t.add("This value is not a valid CIDR notation.", "Aquest valor no \u00e9s una notaci\u00f3 CIDR v\u00e0lida.", "validators", "ca");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "El valor de la m\u00e0scara de xarxa hauria d'estar entre {{ min }} i {{ max }}.", "validators", "ca");
 t.add("This form should not contain extra fields.", "Aquest formulari no hauria de contenir camps addicionals.", "validators", "ca");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "L'arxiu pujat \u00e9s massa gran. Per favor, pugi un arxiu m\u00e9s petit.", "validators", "ca");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "El token CSRF no \u00e9s v\u00e0lid. Per favor, provi d'enviar novament el formulari.", "validators", "ca");

@@ -17,4 +17,6 @@ t.add("Account is disabled.", "\u8cec\u865f\u5df2\u88ab\u7981\u7528\u3002", "sec
 t.add("Account is locked.", "\u8cec\u865f\u5df2\u88ab\u9396\u5b9a\u3002", "security", "zh_TW");
 t.add("Too many failed login attempts, please try again later.", "\u767b\u5165\u5931\u6557\u7684\u6b21\u6578\u904e\u591a\uff0c\u8acb\u7a0d\u5f8c\u518d\u8a66\u3002", "security", "zh_TW");
 t.add("Invalid or expired login link.", "\u5931\u6548\u6216\u904e\u671f\u7684\u767b\u5165\u93c8\u63a5\u3002", "security", "zh_TW");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "\u767b\u9304\u5931\u6557\u7684\u6b21\u6578\u904e\u591a\uff0c\u8acb\u5728%minutes%\u5206\u9418\u5f8c\u518d\u8a66\u3002", "security", "zh_TW");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "\u767b\u9304\u5931\u6557\u7684\u6b21\u6578\u904e\u591a\uff0c\u8acb\u5728%minutes%\u5206\u9418\u5f8c\u518d\u8a66\u3002", "security", "zh_TW");
 })(Translator);

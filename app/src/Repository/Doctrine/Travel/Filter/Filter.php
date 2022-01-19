@@ -35,7 +35,7 @@
      */
     public  $arrivalDateTill;
     public  $expenses;
-    public  $resolution;
+    public  $resolutionName;
     public  $travellersNames;
     public  $tripDestination;
   }

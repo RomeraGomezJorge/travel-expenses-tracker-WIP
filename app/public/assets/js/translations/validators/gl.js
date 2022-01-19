@@ -96,6 +96,8 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Este valor debe cumprir polo menos unha das seguintes restrici\u00f3ns:", "validators", "gl");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Cada elemento desta colecci\u00f3n debe satisfacer o seu propio conxunto de restrici\u00f3ns.", "validators", "gl");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Este valor non \u00e9 un n\u00famero de identificaci\u00f3n de valores internacionais (ISIN) v\u00e1lido.", "validators", "gl");
+t.add("This value should be a valid expression.", "Este valor debe ser unha expresi\u00f3n v\u00e1lida.", "validators", "gl");
+t.add("This value is not a valid CSS color.", "Este valor non \u00e9 unha cor CSS v\u00e1lida.", "validators", "gl");
 t.add("This form should not contain extra fields.", "Este formulario non deber\u00eda conter campos adicionais.", "validators", "gl");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "O arquivo subido \u00e9 demasiado grande. Por favor, suba un arquivo m\u00e1is pequeno.", "validators", "gl");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "O token CSRF non \u00e9 v\u00e1lido. Por favor, probe a enviar novamente o formulario.", "validators", "gl");

@@ -96,6 +96,7 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Balio honek, gutxienez, murrizketa hauetako bat bete behar du:", "validators", "eu");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Bilduma honetako elementu bakoitzak bere murriztapen-multzoa bete behar du.", "validators", "eu");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Balio hori ez da baliozko baloreen nazioarteko identifikazio-zenbaki bat (ISIN).", "validators", "eu");
+t.add("This value should be a valid expression.", "Balio hori baliozko adierazpena izan beharko litzateke.", "validators", "eu");
 t.add("This form should not contain extra fields.", "Formulario honek ez luke aparteko eremurik eduki behar.", "validators", "eu");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Igotako fitxategia handiegia da. Mesedez saiatu fitxategi txikiago bat igotzen.", "validators", "eu");
 t.add("The CSRF token is invalid.", "CSRF tokena ez da egokia.", "validators", "eu");

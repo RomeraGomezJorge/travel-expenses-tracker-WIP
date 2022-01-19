@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Brugerkonto er deaktiveret.", "security", "da");
 t.add("Account is locked.", "Brugerkonto er l\u00e5st.", "security", "da");
 t.add("Too many failed login attempts, please try again later.", "For mange fejlede login fors\u00f8g, pr\u00f8v venligst senere.", "security", "da");
 t.add("Invalid or expired login link.", "Ugyldigt eller udl\u00f8bet login link.", "security", "da");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "For mange fejlede login fors\u00f8g, pr\u00f8v igen om %minutes% minut.", "security", "da");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "For mange fejlede login fors\u00f8g, pr\u00f8v igen om %minutes% minutter.", "security", "da");
 })(Translator);

@@ -96,6 +96,8 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Ang halagang ito ay dapat masunod ang kahit na isang sumusunod na batayan.", "validators", "tl");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Ang bawat elemento sa koleksyon na ito ay dapat masunod ang nararapat na batayan.", "validators", "tl");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Ang halagang ito ay hindi wastong International Securities Identification Number (ISIN).", "validators", "tl");
+t.add("This value should be a valid expression.", "Ang halagang ito ay dapat wastong ekspresyon.", "validators", "tl");
+t.add("This value is not a valid CSS color.", "Ang halagang ito ay hindi wastong kulay ng CSS.", "validators", "tl");
 t.add("This form should not contain extra fields.", "Ang pormang itong ay hindi dapat magkarron ng dagdag na mga patlang.", "validators", "tl");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Ang ini-upload na file ay masyadong malaki. Pakiulit muling mag-upload ng mas maliit na file.", "validators", "tl");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "Hindi balido ang CSRF token. Maagpasa muli ng isang pang porma.", "validators", "tl");

@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Deze waarde moet voldoen aan tenminste een van de volgende voorwaarden:", "validators", "nl");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Elk element van deze collectie moet voldoen aan zijn eigen set voorwaarden.", "validators", "nl");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Deze waarde is geen geldig International Securities Identification Number (ISIN).", "validators", "nl");
+t.add("This value should be a valid expression.", "Deze waarde moet een geldige expressie zijn.", "validators", "nl");
+t.add("This value is not a valid CSS color.", "Deze waarde is geen geldige CSS kleur.", "validators", "nl");
+t.add("This value is not a valid CIDR notation.", "Deze waarde is geen geldige CIDR notatie.", "validators", "nl");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "De waarde van de netmask moet zich tussen {{ min }} en {{ max }} bevinden.", "validators", "nl");
 t.add("This form should not contain extra fields.", "Dit formulier mag geen extra velden bevatten.", "validators", "nl");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Het ge\u00fcploade bestand is te groot. Probeer een kleiner bestand te uploaden.", "validators", "nl");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "De CSRF-token is ongeldig. Probeer het formulier opnieuw te versturen.", "validators", "nl");

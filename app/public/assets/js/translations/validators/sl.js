@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Ta vrednost bi morala zadostiti vsaj eni izmed slede\u010dih omejitev:", "validators", "sl");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Vsak element te zbirke bi moral zadostiti svojemu lastnemu naboru omejitev.", "validators", "sl");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Ta vrednost ni veljavna mednarodna identifikacijska koda vrednostnih papirjev (ISIN).", "validators", "sl");
+t.add("This value should be a valid expression.", "Ta vrednost bi morala biti veljaven izraz.", "validators", "sl");
+t.add("This value is not a valid CSS color.", "Ta vrednost ni veljavna barva CSS.", "validators", "sl");
+t.add("This value is not a valid CIDR notation.", "Ta vrednost ni veljaven zapis CIDR.", "validators", "sl");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Vrednost omre\u017ene maske mora biti med {{ min }} in {{ max }}.", "validators", "sl");
 t.add("This form should not contain extra fields.", "Ta obrazec ne sme vsebovati dodatnih polj.", "validators", "sl");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Nalo\u017eena datoteka je prevelika. Prosimo, poizkusite nalo\u017eiti manj\u0161o.", "validators", "sl");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF vrednost je napa\u010dna. Prosimo, ponovno po\u0161ljite obrazec.", "validators", "sl");

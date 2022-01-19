@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Det h\u00e4r v\u00e4rdet skall uppfylla minst ett av f\u00f6ljande krav:", "validators", "sv");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Varje element i samlingen skall uppfylla sin egen upps\u00e4ttning av krav.", "validators", "sv");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Det h\u00e4r v\u00e4rdet \u00e4r inte ett giltigt \"International Securities Identification Number\" (ISIN).", "validators", "sv");
+t.add("This value should be a valid expression.", "Det h\u00e4r v\u00e4rdet b\u00f6r vara ett giltigt uttryck.", "validators", "sv");
+t.add("This value is not a valid CSS color.", "Det h\u00e4r v\u00e4rdet \u00e4r inte en giltig CSS-f\u00e4rg.", "validators", "sv");
+t.add("This value is not a valid CIDR notation.", "Det h\u00e4r v\u00e4rdet \u00e4r inte en giltig CIDR-notation.", "validators", "sv");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "V\u00e4rdet p\u00e5 n\u00e4tmasken b\u00f6r vara mellan {{ min }} och {{ max }}.", "validators", "sv");
 t.add("This form should not contain extra fields.", "Formul\u00e4ret kan inte inneh\u00e5lla extra f\u00e4lt.", "validators", "sv");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Den uppladdade filen var f\u00f6r stor. F\u00f6rs\u00f6k ladda upp en mindre fil.", "validators", "sv");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF-elementet \u00e4r inte giltigt. F\u00f6rs\u00f6k att skicka formul\u00e4ret igen.", "validators", "sv");

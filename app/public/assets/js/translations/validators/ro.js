@@ -96,6 +96,9 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Aceast\u0103 valoare trebuie s\u0103 \u00eendeplineasc\u0103 cel pu\u021bin una dintre urm\u0103toarele reguli:", "validators", "ro");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Fiecare element din acest set ar trebui s\u0103 \u00eendeplineasc\u0103 propriul set de reguli.", "validators", "ro");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Aceast\u0103 valoare nu este un num\u0103r interna\u021bional de identificare (ISIN) valabil.", "validators", "ro");
+t.add("This value should be a valid expression.", "Aceast\u0103 valoare ar trebui s\u0103 fie o expresie valid\u0103.", "validators", "ro");
+t.add("This value is not a valid CIDR notation.", "Aceast\u0103 valoare nu este o nota\u021bie CIDR valid\u0103.", "validators", "ro");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Valoarea netmask-ului trebuie sa fie intre {{ min }} si {{ max }}.", "validators", "ro");
 t.add("This form should not contain extra fields.", "Acest formular nu ar trebui s\u0103 con\u021bin\u0103 c\u00e2mpuri suplimentare.", "validators", "ro");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Fi\u0219ierul \u00eenc\u0103rcat a fost prea mare. V\u0103 rug\u0103m sa \u00eenc\u0103rca\u021bi un fi\u0219ier mai mic.", "validators", "ro");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "Token-ul CSRF este invalid. V\u0103 rug\u0103m s\u0103 retrimite\u021bi formularul.", "validators", "ro");

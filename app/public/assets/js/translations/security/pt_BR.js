@@ -17,4 +17,6 @@ t.add("Account is disabled.", "Conta desativada.", "security", "pt_BR");
 t.add("Account is locked.", "A conta est\u00e1 travada.", "security", "pt_BR");
 t.add("Too many failed login attempts, please try again later.", "Muitas tentativas de login malsucedidas, tente novamente mais tarde.", "security", "pt_BR");
 t.add("Invalid or expired login link.", "Link de login inv\u00e1lido ou expirado.", "security", "pt_BR");
+t.add("Too many failed login attempts, please try again in %minutes% minute.", "Muitas tentativas de login inv\u00e1lidas, por favor, tente novamente em um minuto.", "security", "pt_BR");
+t.add("Too many failed login attempts, please try again in %minutes% minutes.", "Muitas tentativas de login inv\u00e1lidas, por favor, tente novamente em %minutes% minutos.", "security", "pt_BR");
 })(Translator);

@@ -96,10 +96,14 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "Ova vrijednost bi trebalo da zadovoljava namjanje jedno od narednih ograni\u010denja:", "validators", "bs");
 t.add("Each element of this collection should satisfy its own set of constraints.", "Svaki element ove kolekcije bi trebalo da zadovolji sopstveni skup ograni\u010denja.", "validators", "bs");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "Ova vrijednost nije ispravna me\u0111unarodna identifikaciona oznaka hartija od vrijednosti (ISIN).", "validators", "bs");
+t.add("This value should be a valid expression.", "Ova vrijednost bi trebala biti va\u017ee\u0107i izraz.", "validators", "bs");
+t.add("This value is not a valid CSS color.", "Ova vrijednost nije va\u017ee\u0107a CSS boja.", "validators", "bs");
+t.add("This value is not a valid CIDR notation.", "Ova vrijednost nije va\u017ee\u0107a CIDR notacija.", "validators", "bs");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "Vrijednost NetMask bi trebala biti izme\u0111u {{min}} i {{max}}.", "validators", "bs");
 t.add("This form should not contain extra fields.", "Ovaj obrazac ne bi trebalo da sadr\u017ei dodatna polja.", "validators", "bs");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "Prenijeta (uploaded) datoteka je prevelika. Molim poku\u0161ajte prenijeti manju datoteku.", "validators", "bs");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF vrijednost nije ispravna. Molim poku\u0161ajte ponovo da po\u0161aljete obrazac.", "validators", "bs");
-t.add("This value is not a valid HTML5 color.", "Ova vrijednost nije ispravna HTML5 boja.", "validators", "bs");
+t.add("This value is not a valid HTML5 color.", "Ova vrijednost nije va\u017ee\u0107a HTML5 boja.", "validators", "bs");
 t.add("Please enter a valid birthdate.", "Molim upi\u0161ite ispravan datum ro\u0111enja.", "validators", "bs");
 t.add("The selected choice is invalid.", "Odabrani izbor nije ispravan.", "validators", "bs");
 t.add("The collection is invalid.", "Ova kolekcija nije ispravna.", "validators", "bs");

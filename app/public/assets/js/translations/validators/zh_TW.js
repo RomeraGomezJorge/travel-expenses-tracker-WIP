@@ -32,11 +32,11 @@ t.add("The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}."
 t.add("The file is too large.", "\u6a94\u6848\u592a\u5927\u3002", "validators", "zh_TW");
 t.add("The file could not be uploaded.", "\u7121\u6cd5\u4e0a\u50b3\u6b64\u6a94\u6848\u3002", "validators", "zh_TW");
 t.add("This value should be a valid number.", "\u8a72\u503c\u61c9\u8a72\u70ba\u6709\u6548\u7684\u6578\u5b57\u3002", "validators", "zh_TW");
-t.add("This value is not a valid country.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684\u570b\u5bb6\u540d\u3002", "validators", "zh_TW");
 t.add("This file is not a valid image.", "\u8a72\u6a94\u6848\u4e0d\u662f\u6709\u6548\u7684\u5716\u7247\u3002", "validators", "zh_TW");
 t.add("This is not a valid IP address.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684IP\u5730\u5740\u3002", "validators", "zh_TW");
 t.add("This value is not a valid language.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684\u8a9e\u8a00\u540d\u3002", "validators", "zh_TW");
 t.add("This value is not a valid locale.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684\u5340\u57df\u503c\uff08locale\uff09\u3002", "validators", "zh_TW");
+t.add("This value is not a valid country.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684\u570b\u5bb6\u540d\u3002", "validators", "zh_TW");
 t.add("This value is already used.", "\u8a72\u503c\u5df2\u7d93\u88ab\u4f7f\u7528\u3002", "validators", "zh_TW");
 t.add("The size of the image could not be detected.", "\u4e0d\u80fd\u89e3\u6790\u5716\u7247\u5927\u5c0f\u3002", "validators", "zh_TW");
 t.add("The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.", "\u5716\u7247\u592a\u5bec ({{ width }}px)\uff0c\u6700\u5927\u5bec\u5ea6\u70ba {{ max_width }}px \u3002", "validators", "zh_TW");
@@ -96,6 +96,10 @@ t.add("The number of elements in this collection should be a multiple of {{ comp
 t.add("This value should satisfy at least one of the following constraints:", "\u8a72\u6578\u503c\u9700\u7b26\u5408\u4ee5\u4e0b\u5176\u4e2d\u4e00\u500b\u7d04\u675f\uff1a", "validators", "zh_TW");
 t.add("Each element of this collection should satisfy its own set of constraints.", "\u8a72\u96c6\u5408\u5167\u7684\u6bcf\u500b\u5143\u7d20\u9700\u7b26\u5408\u5143\u7d20\u672c\u8eab\u898f\u5b9a\u7684\u7d04\u675f\u3002", "validators", "zh_TW");
 t.add("This value is not a valid International Securities Identification Number (ISIN).", "\u8a72\u6578\u503c\u4e0d\u662f\u6709\u6548\u7684\u570b\u969b\u8b49\u5238\u8b58\u5225\u78bc \uff08ISIN\uff09\u3002", "validators", "zh_TW");
+t.add("This value should be a valid expression.", "\u8a72\u503c\u9700\u70ba\u4e00\u500b\u6709\u6548\u7684\u8868\u9054\u5f0f\u3002", "validators", "zh_TW");
+t.add("This value is not a valid CSS color.", "\u8a72\u503c\u4e0d\u662f\u6709\u6548\u7684CSS\u984f\u8272\u3002", "validators", "zh_TW");
+t.add("This value is not a valid CIDR notation.", "\u8a72\u503c\u4e0d\u662f\u4e00\u500b\u6709\u6548\u7684CIDR\u8868\u793a\u3002", "validators", "zh_TW");
+t.add("The value of the netmask should be between {{ min }} and {{ max }}.", "\u7db2\u7d61\u63a9\u78bc\u7684\u503c\u61c9\u7576\u5728 {{ min }} \u548c {{ max }} \u4e4b\u9593\u3002", "validators", "zh_TW");
 t.add("This form should not contain extra fields.", "\u8a72\u8868\u55ae\u4e2d\u4e0d\u53ef\u6709\u984d\u5916\u5b57\u6bb5\u3002", "validators", "zh_TW");
 t.add("The uploaded file was too large. Please try to upload a smaller file.", "\u4e0a\u50b3\u6587\u4ef6\u592a\u5927\uff0c \u8acb\u91cd\u65b0\u5617\u8a66\u4e0a\u50b3\u4e00\u500b\u8f03\u5c0f\u7684\u6587\u4ef6\u3002", "validators", "zh_TW");
 t.add("The CSRF token is invalid. Please try to resubmit the form.", "CSRF \u9a57\u8b49\u7b26\u7121\u6548\uff0c \u8acb\u91cd\u65b0\u63d0\u4ea4\u3002", "validators", "zh_TW");
