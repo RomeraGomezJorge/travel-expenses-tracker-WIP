@@ -25,18 +25,14 @@ class LocationCostsType extends AbstractType
         ])
         
         ->add('cost', IntegerType::class, [
-          'required' => FALSE,
+          'required' => TRUE,
           'attr' => [
             'placeholder' => '- Required -',
           ],
           'label' => 'Cost',
         ])
         ->add('save', SubmitType::class, [
-          'attr' => [
-            'class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',
-            'id'=> 'id="submitBtn',
-          ]
-          ,
+          'attr' => ['class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',],
           'label' => 'Save',
         ]);
         ;
@@ -46,6 +42,7 @@ class LocationCostsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => LocationCosts::class,
+            'attr' => ['id' => 'form', 'novalidate' => 'novalidate']
         ]);
     }
 }

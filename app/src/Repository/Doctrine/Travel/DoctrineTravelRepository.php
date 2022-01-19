@@ -3,10 +3,12 @@
   
   namespace App\Repository\Doctrine\Travel;
   
+  use App\Entity\Resolution;
   use App\Entity\Travel;
   use App\Repository\Doctrine\DoctrineRepository;
   use App\Repository\Doctrine\Travel\Filter\Filter;
   use App\Repository\TravelRepository;
+  use Doctrine\ORM\Mapping\Entity;
   use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
   
   final class DoctrineTravelRepository extends DoctrineRepository implements TravelRepository {
@@ -22,15 +24,16 @@
     ): SlidingPagination {
       $qb = $this->repository(self::ENTITY_CLASS)
         ->createQueryBuilder('t')
-        ->select('t', 'tripDestinations', 'travellersNames')
+        ->select('t', 'tripDestinations', 'travellersNames','resolution')
         ->select('t', 'tripDestinations')
         ->innerJoin('t.tripDestinations', 'tripDestinations')
-        ->innerJoin('t.travellersNames', 'travellersNames');
+        ->innerJoin('t.travellersNames', 'travellersNames')
+        ->innerJoin('t.resolution', 'resolution');
       
-      if ($filter->resolution) {
-        $qb->andWhere('t.resolution = :resolution');
-        $qb->setParameter(':resolution', $filter->resolution);
-      }
+//      if ($filter->resolution) {
+//        $qb->andWhere('t.resolution = :resolution');
+//        $qb->setParameter(':resolution', $filter->resolution);
+//      }
       
       if ($filter->departureDateFrom) {
         $qb->andWhere($qb->expr()->gt('t.departureDate', ':from'));
@@ -89,6 +92,14 @@
     
     public function delete(Travel $employee): void {
       $this->remove($employee);
+    }
+  
+    public function removeOldReferenceToResolution(Resolution $resolution): void {
+  
+      $resolution->setTravel(NULL);
+      
+      $this->remove($resolution);
+      
     }
     
   }

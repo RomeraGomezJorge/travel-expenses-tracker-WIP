@@ -841,6 +841,14 @@
         <source>Traveller's name</source>
         <target>Viajero</target>
       </trans-unit>
+      <trans-unit id="tra23" resname="Add another file">
+        <source>Add another file</source>
+        <target>Agregar otro archivo</target>
+      </trans-unit>
+      <trans-unit id="tra24" resname="Files">
+        <source>Files</source>
+        <target>Archivos</target>
+      </trans-unit>
 
       <trans-unit id="tri0" resname='New Trip Destination'>
         <source>New Trip Destination</source>
@@ -869,6 +877,14 @@
       <trans-unit id="tri7" resname='The trip destination "%name%".'>
         <source>The trip destination "%name%".</source>
         <target>El destino "%name%".</target>
+      </trans-unit>
+      <trans-unit id="tri8" resname='Filter by employee'>
+        <source>Filter by employee</source>
+        <target>Filtrar por empleado</target>
+      </trans-unit>
+      <trans-unit id="tri9" resname='Filter by trip destination'>
+        <source>Filter by trip destination</source>
+        <target>Filtrar por destino</target>
       </trans-unit>
 
 

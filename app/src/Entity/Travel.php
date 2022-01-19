@@ -1,13 +1,12 @@
 <?php
   
   namespace App\Entity;
-
+  
   use Doctrine\Common\Collections\ArrayCollection;
   use Doctrine\Common\Collections\Collection;
   use Doctrine\ORM\Mapping as ORM;
-  use Symfony\Component\Validator\Constraints as Assert;
-
-
+      use Symfony\Component\Validator\Constraints as Assert;
+  
   /**
    * Travel
    *
@@ -15,6 +14,11 @@
    * @ORM\Entity
    */
   class Travel {
+    
+    public function __construct() {
+      $this->travellersNames = new ArrayCollection();
+      $this->tripDestinations = new ArrayCollection();
+    }
     
     /**
      * @var int
@@ -30,53 +34,49 @@
      *
      * @ORM\Column(name="departure_date", type="date", nullable=false)
      * @Assert\LessThanOrEqual(propertyPath="arrivalDate")
+     * @Assert\NotBlank()
      */
     private $departureDate;
     
     /**
-     * @var \DateTime|null
+     * @var \DateTime
      *
-     * @ORM\Column(name="arrival_date", type="date", nullable=true)
+     * @ORM\Column(name="arrival_date", type="date", nullable=false)
      * @Assert\LessThanOrEqual("today UTC")
      * @Assert\GreaterThanOrEqual(propertyPath="departureDate")
+     * @Assert\NotBlank()
      */
     private $arrivalDate;
     
     /**
-     * @var string|null
+     * @var string
      *
      * @ORM\Column(name="travel_expenses", type="decimal", precision=10,
-     *   scale=0, nullable=true)
+     *   scale=0, nullable=false)
+     * @Assert\NotBlank()
      */
     private $expenses;
     
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="resolution_number", type="integer", nullable=true)
+     * @ORM\OneToOne(targetEntity="Resolution", mappedBy="travel",
+     *   cascade={"persist", "remove"})
      */
     private $resolution;
-
     
     /**
      * @ORM\OneToMany(targetEntity="TravellersName", mappedBy="travel",cascade={"all"})
      */
     private $travellersNames;
     
-    
     /**
-     * @ORM\ManyToMany(targetEntity="TripDestination", inversedBy="travels", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="TripDestination", inversedBy="travels",
+     *   cascade={"persist"})
      * @ORM\JoinTable(name="travel_destination",
-     *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="trip_destination_id", referencedColumnName="id", onDelete="CASCADE")}
+     *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")}, inverseJoinColumns={@ORM\JoinColumn(name="trip_destination_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
+     * @Assert\NotBlank()
      */
     private $tripDestinations;
-    
-    public function __construct() {
-      $this->travellersNames = new ArrayCollection();
-      $this->tripDestinations = new ArrayCollection();
-    }
     
     public function getId(): ?int {
       return $this->id;
@@ -86,7 +86,7 @@
       return $this->departureDate;
     }
     
-    public function setDepartureDate(\DateTimeInterface $departureDate): self {
+    public function setDepartureDate(?\DateTimeInterface $departureDate): self {
       $this->departureDate = $departureDate;
       
       return $this;
@@ -108,16 +108,6 @@
     
     public function setExpenses(?string $expenses): self {
       $this->expenses = $expenses;
-      
-      return $this;
-    }
-    
-    public function getResolution(): ?int {
-      return $this->resolution;
-    }
-    
-    public function setResolution(?int $resolution): self {
-      $this->resolution = $resolution;
       
       return $this;
     }
@@ -159,12 +149,42 @@
       return $this;
     }
     
-    public function removeTripDestination(TripDestination $tripDestination): self {
+    public function removeTripDestination(TripDestination $tripDestination
+    ): self {
       if ($this->tripDestinations->contains($tripDestination)) {
         $this->tripDestinations->removeElement($tripDestination);
       }
       
       return $this;
+    }
+    
+    public function getResolution() {
+      return $this->resolution;
+    }
+    
+    public function setResolution(?Resolution $resolution): self {
+      // unset the owning side of the relation if necessary
+      if ($resolution === NULL && $this->resolution !== NULL) {
+        $this->resolution->setTravel(NULL);
+      }
+      
+      // set the owning side of the relation if necessary
+      if ($resolution !== NULL && $resolution->getTravel() !== $this) {
+        $resolution->setTravel($this);
+      }
+      
+      $this->resolution = $resolution;
+  
+      if ($this->departureDate !== NULL) {
+        $this->resolution->setYear($this->departureDate->format('Y'));
+      }
+      
+      
+      return $this;
+    }
+  
+    public function updateResolution() {
+      
     }
     
   }

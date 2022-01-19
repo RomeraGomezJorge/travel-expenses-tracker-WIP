@@ -32,9 +32,87 @@
     {{ form_row(form.tripDestinations) }}
     {{ form_row(form.departureDate) }}
     {{ form_row(form.arrivalDate) }}
-    {{ form_row(form.resolution) }}
+
     {{ form_row(form.expenses) }}
 
+    <div class="card border">
+        <div class="card-title bg-black text-white font-weight-bold p-2">{{ 'Resolution'|trans }}</div>
+        <div class="card-body">
+
+            {{ form_row(form.resolution.name) }}
+            {% do form.resolution.file.setRendered %}
+            <div class="form-group">
+                <label>{{ 'Files'|trans }}</label>
+                <div id="resolution-file-fields-list"
+                     data-prototype="{{ form_widget(form.resolution.file.vars.prototype)|e }}"
+                     data-widget-tags="{{ '<div></div>'|e }}"
+                     data-widget-counter="{{ form.resolution.file|length }}"
+                ></div>
+
+                <button type="button"
+                        class="add-another-resolution-file-collection-widget btn btn-focus mt-2 valid"
+                        data-list-selector="#resolution-file-fields-list"
+                >
+                    <span class="btn-label">
+                        <span class="btn-label">
+                            <i class="fas fa-plus-circle text-success"></i>
+                        </span>
+                        {{ 'Add another file'|trans }}
+                    </span>
+                </button>
+
+                {% if travel.resolution.file is defined %}
+                    <div class="form-group">
+                        <table id="add-row" class="display table table-striped table-hover dataTable"
+                               role="grid" aria-describedby="add-row_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="d-none d-sm-table-cell">{{ 'Preview'|trans }}</th>
+                                <th class="d-none d-sm-table-cell">
+                                    {{ 'Actions'|trans }}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for file in travel.resolution.file %}
+                                <tr role="row"
+                                    class="odd"
+                                    id="css-selector-for-tr-that_contains-items-to-delete-{{ loop.index }}"
+                                >
+                                    {# ------ Start desktop item view ------#}
+                                    <td class="d-none d-sm-table-cell">
+                                        <a
+                                                href="{{ asset('/uploads/resolution/'~file) }} "
+                                                download
+                                                target="_blank"
+                                        >
+                                            <i class="fas fa-download"></i>
+                                            {{ 'Downolad'|trans }}
+                                        </a>
+                                    </td>
+
+                                    <td class="d-none d-sm-table-cell">
+
+                                        <button type="button"
+                                                class="btn btn-link btn-danger delete"
+                                                data-toggle="modal"
+                                                data-target="#delete-confirmation-modal"
+                                                data-form_action_attribute_to_delete="{{ path(delete_file_path, {'travel': travel.id,'file':file}) }}"
+                                                data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ loop.index }}"
+                                        >
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                    {# ------ End desktop item view------#}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="card-action">
@@ -42,4 +120,44 @@
 </div>
 
 {{ form_end(form) }}
+
+
+<div class="modal" id="delete-confirmation-modal" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box text-danger" id="icon-delete-confirm">
+                    <i class="far fa-trash-alt"></i>
+                </div>
+                <h4 class="modal-title w-100">{{ 'Are you sure you want to delete?'|trans }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <form id="delete-confirmation-form" action="" method="post">
+                    <p id="message-to-delete-confirmation"></p>
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                    <input type="hidden"
+                           name="css_selector_to_handle_tr_style_that_contains_items_to_delete"
+                           value=""
+                           id="css-selector-to-handle-tr-style-that-contains-items-to_delete"
+                    >
+                    <button type="button" class="btn btn-focus" data-dismiss="modal">
+                            <span class="btn-label">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                        {{ 'Cancel'|trans }}
+                    </button>
+                    <button type="submit" class="btn btn-danger confirm-delete-button">
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        {{ 'Yes, delete it'|trans }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 

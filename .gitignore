@@ -2,4 +2,5 @@
 /app/vendor/
 /app/var/
 /app/tests/
+/app/public/uploads/resolution/
 /docker/database/data/

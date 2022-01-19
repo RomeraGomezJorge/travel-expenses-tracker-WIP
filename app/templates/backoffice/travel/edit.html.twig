@@ -7,9 +7,13 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
     <script src="{{ asset('assets/js/plugin/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset("assets/js/blog/travel/form/calculate.travel.expenses.js") }}"></script>
     <script src="{{ asset("assets/js/blog/travel/form/add.another.employee.js") }}"></script>
+    <script src="{{ asset("assets/js/blog/travel/form/add.another.resolution.file.js") }}"></script>
+    <script src="{{ asset("assets/js/blog/travel/form/delete.resolution.file.on.confirm.yes.from.delete.confirm.modal.js") }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/pass.data.to.delete.confirmation.modal.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('select[name*="employee"]').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});

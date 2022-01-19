@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('select').select2({closeOnSelect: false,placeholder: '- '+ Translator.trans('Required')+ ' -'});
 
     $('#travel_departureDate').on('focusout',function () {
         calculateTravelCost();

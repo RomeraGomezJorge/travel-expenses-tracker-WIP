@@ -9,12 +9,15 @@
   use App\Form\Travel\TravelType;
   use App\Repository\Doctrine\Travel\Filter;
   use App\Repository\TravelRepository;
-  use Doctrine\ORM\EntityManagerInterface;
-  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+  use App\Service\FileManager;
+  use App\Service\Resolution\ResolutionFileManager;
+  use Symfony\Component\HttpFoundation\JsonResponse;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\HttpFoundation\Response;
+  use Symfony\Component\String\Slugger\SluggerInterface;
   use Symfony\Component\Routing\Annotation\Route;
-  
+  use Exception;
+
   /**
    * @Route("/travel")
    */
@@ -30,10 +33,23 @@
     
     const DELETE_PATH = 'travel_delete';
     
+    const DELETE_FILE_PATH = 'travel_delete_resolution_file';
+    
     private TravelRepository $repository;
     
-    public function __construct(TravelRepository $repository) {
+    private SluggerInterface $slugger;
+    
+    private  ResolutionFileManager $fileManager;
+ 
+  
+    public function __construct(
+      TravelRepository $repository,
+      SluggerInterface $slugger,
+      ResolutionFileManager $fileManager
+    ) {
       $this->repository = $repository;
+      $this->slugger = $slugger;
+      $this->fileManager = $fileManager;
     }
     
     /**
@@ -43,12 +59,12 @@
       $filter = new Filter\Filter();
       $form = $this->createForm(Filter\Form::class, $filter);
       $form->handleRequest($request);
-//      if($form->isSubmitted() && !$form->isValid()){
-//        return $this->redirectWithErrorMessage(
-//          self::INDEX_PATH,
-//          MessageConstants::UNEXPECTED_ERROR_HAS_OCCURRED
-//        );
-//      }
+      if($form->isSubmitted() && !$form->isValid()){
+        return $this->redirectWithErrorMessage(
+          self::INDEX_PATH,
+          MessageConstants::UNEXPECTED_ERROR_HAS_OCCURRED
+        );
+      }
       
       $pagination = $this->repository->all(
         $filter,
@@ -66,81 +82,130 @@
           'new_path' => self::NEW_PATH,
           'edit_path' => self::EDIT_PATH,
           'delete_path' => self::DELETE_PATH,
-          'form_filter' => $form->createView()
+          'form_filter' => $form->createView(),
         ]);
     }
     
     /**
      * @Route("/new", name="travel_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response {
+    public function new(Request $request, FileManager $fileUploader): Response {
       $travel = new Travel();
       $form = $this->createForm(TravelType::class, $travel);
       $form->handleRequest($request);
       
       if ($form->isSubmitted() && $form->isValid()) {
+  
+        $fileNames = $this->fileManager->uploadFiles(
+          $travel->getResolution(),
+          $request);
+        
+        $travel->getResolution()->addFile($fileNames);
+          
         $this->repository->save($travel);
+          
+         return $this->redirectWithSuccessMessage(
+            self::INDEX_PATH,
+            MessageConstants::SUCCESS_MESSAGE_TO_CREATE
+          );
+        }
+        
+        return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::NEW,
+          [
+            'travel' => $travel,
+            'form' => $form,
+            'action_to_do' => FormConstants::CREATE_ACTION_TEXT,
+            'page_title' => FormConstants::CREATE_ACTION_TEXT . ' Travel',
+            'index_path' => self::INDEX_PATH,
+          ]);
+      }
+      
+      /**
+       * @Route("/{travel}/edit", name="travel_edit", methods={"GET", "POST"})
+       */
+      public function edit(Request $request, Travel $travel): Response {
+        $form = $this->createForm(TravelType::class, $travel);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid() ) {
+
+          $resolution = $travel->getResolution();
+          
+          $fileNames = $this->fileManager->uploadFiles(
+            $travel->getResolution(),
+            $request);
+  
+          $resolution->addFile($fileNames);
+          
+          $this->repository->removeOldReferenceToResolution($resolution);
+          
+          $travel->setResolution($resolution);
+          
+          $this->repository->save($travel);
+          
+          return $this->redirectWithSuccessMessage(
+            self::INDEX_PATH,
+            MessageConstants::SUCCESS_MESSAGE_TO_UPDATE
+          );
+        }
+        
+        return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::EDIT,
+          [
+            'travel' => $travel,
+            'form' => $form,
+            'action_to_do' => FormConstants::UPDATE_ACTION_TEXT,
+            'page_title' => FormConstants::UPDATE_ACTION_TEXT . ' Travel',
+            'index_path' => self::INDEX_PATH,
+            'delete_file_path' => self::DELETE_FILE_PATH
+          ]);
+      }
+      
+      /**
+       * @Route("/list/{travel}", name="travel_delete", methods={"POST"})
+       */
+      public function delete(Request $request, Travel $travel): Response {
+        if (!$this->isCsrfTokenValid('delete',
+          $request->request->get('_token'))) {
+          return $this->redirectWithErrorMessage(
+            self::INDEX_PATH,
+            MessageConstants::INVALID_TOKEN_CSFR_MESSAGE
+          );
+        }
+        
+        $this->repository->delete($travel);
         
         return $this->redirectWithSuccessMessage(
           self::INDEX_PATH,
-          MessageConstants::SUCCESS_MESSAGE_TO_CREATE
+          MessageConstants::SUCCESS_MESSAGE_TO_DELETE
         );
       }
-      
-      return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::NEW,
-        [
-          'travel' => $travel,
-          'form' => $form,
-          'action_to_do' => FormConstants::CREATE_ACTION_TEXT,
-          'page_title' => FormConstants::CREATE_ACTION_TEXT . ' Travel',
-          'index_path' => self::INDEX_PATH,
-        ]);
-    }
   
     /**
-     * @Route("/{travel}/edit", name="travel_edit", methods={"GET", "POST"})
+     * @Route("/{travel}/{file}/delete-resolution-file", name="travel_delete_resolution_file", methods={"POST"})
      */
-    public function edit(Request $request, Travel $travel): Response {
-      $form = $this->createForm(TravelType::class, $travel);
-      $form->handleRequest($request);
-    
-      if ($form->isSubmitted() && $form->isValid()) {
+    public function deleteResolutionFile(Request $request, Travel $travel, $file): JsonResponse {
+      
+        if (!$this->isCsrfTokenValid('delete',
+          $request->request->get('_token'))) {
+          return $this->json([
+              'fail_invalid_csfr_token' =>MessageConstants::INVALID_TOKEN_CSFR_MESSAGE]
+          );
+        }
+      
+        $resolution = $travel->getResolution();
+      
+        $this->repository->removeOldReferenceToResolution($resolution);
+  
+        $resolution->removeFile($file);
+        
+        $this->fileManager->removeFile($file);
+      
+        $travel->setResolution($resolution);
+      
         $this->repository->save($travel);
-      
-        return $this->redirectWithSuccessMessage(
-          self::INDEX_PATH,
-          MessageConstants::SUCCESS_MESSAGE_TO_UPDATE
-        );
-      }
-    
-      return $this->renderForm(self::TEMPLATES_FOLDER . TwigFileNameConstants::EDIT,
-        [
-          'travel' => $travel,
-          'form' => $form,
-          'action_to_do' => FormConstants::UPDATE_ACTION_TEXT,
-          'page_title' => FormConstants::UPDATE_ACTION_TEXT . ' Travel',
-          'index_path' => self::INDEX_PATH,
-        ]);
+  
+        return $this->json(['success']);
     }
   
-    /**
-     * @Route("/list/{travel}", name="travel_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Travel $travel): Response {
-      if (!$this->isCsrfTokenValid('delete',
-        $request->request->get('_token'))) {
-        return $this->redirectWithErrorMessage(
-          self::INDEX_PATH,
-          MessageConstants::INVALID_TOKEN_CSFR_MESSAGE
-        );
-      }
-    
-      $this->repository->delete($travel);
-    
-      return $this->redirectWithSuccessMessage(
-        self::INDEX_PATH,
-        MessageConstants::SUCCESS_MESSAGE_TO_DELETE
-      );
-    }
-    
+  
   }

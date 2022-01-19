@@ -1,6 +1,6 @@
 <?php
   
-  namespace App\Form\EmployeesType;
+  namespace App\Form\Travel;
   
   use App\Entity\Employee;
   use App\Entity\TravellersName;
@@ -28,10 +28,10 @@
                 'multiple' => FALSE,
                 'required' => TRUE,
                 'attr' => [
-                  'placeholder' => '- Required -',
                   'class' => 'row col-12',
                   'autofocus' => 'autofocus',
                 ],
+                'placeholder' => '- Required -',
                 'label' => 'Employee',
                 'label_attr' => ['class' => 'row col-12'],
               ])

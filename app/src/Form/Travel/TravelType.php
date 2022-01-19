@@ -3,9 +3,9 @@
   namespace App\Form\Travel;
   
   use App\Entity\Employee;
+  use App\Entity\Resolution;
   use App\Entity\Travel;
   use App\Entity\TripDestination;
-  use App\Form\EmployeesType\TravellersNameType;
   use Doctrine\ORM\EntityManagerInterface;
   use phpDocumentor\Reflection\Types\False_;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -43,36 +43,30 @@
           'class' => TripDestination::class,
           'multiple' => TRUE,
           'required' => TRUE,
-          'attr' => [
-            'placeholder' => '- Required -',
-          ],
+          'empty_data' => '',// fix rendering errors replace the default value ( [] )
           'choice_attr' => function (TripDestination $product, $key, $index) {
             return ['data-cost' => $product->getLocationCosts()->getCost() ];
           },
           'label' => 'Destinations',
+          'label_attr' =>['class'=>'w-100'],
+          'attr'=>[
+            'required'=>'required'
+          ],
+          'placeholder' => 'Required'
         ])
         ->add('departureDate', DateType::class, [
           'widget' => 'single_text',
           'required' => TRUE,
-          'attr' => [
-            'placeholder' => '- Required -',
-          ],
           'label' => 'Departure Date',
+          'empty_data' => '',
         ])
         ->add('arrivalDate', DateType::class, [
           'widget' => 'single_text',
           'required' => TRUE,
-          'attr' => [
-            'placeholder' => '- Required -',
-          ],
           'label' => 'Arrival Date',
         ])
-        ->add('resolution', IntegerType::class, [
-          'required' => FALSE,
-          'attr' => [
-            'placeholder' => '- Optional -',
-          ],
-          'label' => 'Resolution',
+        ->add('resolution',ResolutionType::class,[
+          'label' => FALSE
         ])
         ->add('expenses', IntegerType::class, [
           'required' => TRUE,
@@ -82,11 +76,7 @@
           'label' => 'Expenses',
         ])
         ->add('save', SubmitType::class, [
-          'attr' => [
-            'class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',
-            'id' => 'id="submitBtn',
-          ]
-          ,
+          'attr' => ['class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2'],
           'label' => 'Save',
         ]);
     }
@@ -94,6 +84,7 @@
     public function configureOptions(OptionsResolver $resolver): void {
       $resolver->setDefaults([
         'data_class' => Travel::class,
+        'attr' => ['id' => 'form', 'novalidate' => 'novalidate']
       ]);
     }
     

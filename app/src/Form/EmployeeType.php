@@ -52,6 +52,7 @@
     public function configureOptions(OptionsResolver $resolver): void {
       $resolver->setDefaults([
         'data_class' => Employee::class,
+        'attr' => ['id' => 'form', 'novalidate' => 'novalidate']
       ]);
     }
     

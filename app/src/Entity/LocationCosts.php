@@ -66,7 +66,7 @@ class LocationCosts
         return $this;
     }
   
-    public function locationAndCost():?string {
+    public function locationAndCost():string {
       return $this->location .' ( $'.$this->cost .')';
     }
 

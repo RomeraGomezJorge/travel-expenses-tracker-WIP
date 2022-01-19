@@ -36,15 +36,11 @@
         ->add('locationCosts', ChoiceType::class, [
           'expanded' => 'radio',
           'choices' => $this->em->getRepository("App:LocationCosts")->findAll(),
-          'choice_label' => 'locationAndCost',
+          'choice_label' => 'location',
           'label' => 'Location Costs',
         ])
         ->add('save', SubmitType::class, [
-          'attr' => [
-            'class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2',
-            'id'=> 'id="submitBtn',
-          ]
-          ,
+          'attr' => ['class' => 'btn btn-success col-12 col-sm-4 col-md-2 col-lg-2'],
           'label' => 'Save',
         ]);
     }
@@ -52,6 +48,7 @@
     public function configureOptions(OptionsResolver $resolver): void {
       $resolver->setDefaults([
         'data_class' => TripDestination::class,
+        'attr' => ['id' => 'form', 'novalidate' => 'novalidate']
       ]);
     }
     

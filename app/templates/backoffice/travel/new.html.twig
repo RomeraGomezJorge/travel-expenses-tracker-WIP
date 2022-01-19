@@ -14,13 +14,16 @@
     <script src="{{ asset('assets/js/plugin/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset("assets/js/blog/travel/form/calculate.travel.expenses.js") }}"></script>
     <script src="{{ asset("assets/js/blog/travel/form/add.another.employee.js") }}"></script>
+    <script src="{{ asset("assets/js/blog/travel/form/add.another.resolution.file.js") }}"></script>
     <script>
         $(document).ready(function () {
 
             $('select[name*="employee"]').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});
-            $('select[name*="replacement"] ').select2({placeholder: '- ' + Translator.trans('Optional') + ' -'});
+            $('#travel_tripDestinations').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});
+            $('select[name*="replacement"]').select2({placeholder: '- ' + Translator.trans('Optional') + ' -'});
             $('.add-another-collection-widget').click();
-            
+
+            // set departureDate value in arrivalDate
             $('[name="travel[departureDate]"]').on('focusout',function () {
                 $('[name="travel[arrivalDate]"]').val($('[name="travel[departureDate]"]').val());
             })

@@ -7,12 +7,14 @@ $(document).ready(function () {
                 element.value = $.trim(element.value).toString();
             }
 
-            /* validate a field on focus out*/
-            $(element).valid();
+            /* remove symfony form error */
+            $(element).parent().find('.invalid-feedback.d-block').remove();
+
+            $(element).valid()
 
         },
         onkeyup: false,
-        submitHandler: function () {
+        submitHandler: function (form) {
             /*when an valid form is submitted. Disabled submit button and set the loading icon*/
             $("#submitBtn i").removeClass('fas fa-save');
             $("#submitBtn i").addClass('fas fa-sync-alt fa-spin fa-3x fa-fw');
@@ -25,10 +27,6 @@ $(document).ready(function () {
             $("#submitBtn i").addClass(' fas fa-save');
             $("#submitBtn ").attr("disabled", false);
 
-            $('html, body').animate({
-                scrollTop: ($('.error').offset().top - 300)
-            }, 500);
-
         },
         highlight: function (element) {
             $(element).closest('.form-group, .form-check').removeClass('has-success').addClass('has-error');
@@ -38,9 +36,8 @@ $(document).ready(function () {
         },
         errorPlacement: function (error, element) {
 
-            error.insertAfter(element.siblings(":last"));
-
-            error.insertAfter(element.parent('.form-radio-label').siblings(":last"));
+            if ($(element).hasClass('select2-hidden-accessible')){
+                error.insertAfter($(element).parent().find('span.select2'))}
         }
     });
 

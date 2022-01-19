@@ -61,7 +61,7 @@
         ->add('travellersNames', EntityType::class, [
           'class' => Employee::class,
           'required' => FALSE,
-          'label' => 'Travellers Name'
+          'label' => 'Employee'
         ])
         ->add('tripDestination', EntityType::class, [
           'class' => TripDestination::class,

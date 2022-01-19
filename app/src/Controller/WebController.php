@@ -13,10 +13,10 @@
       return $this->redirectToRoute($routeName);
     }
     
-    public function redirectWithErrorMessage(string $routeName, string $message): RedirectResponse {
+    public function redirectWithErrorMessage(string $routeName, string $message, array $parameters = []): RedirectResponse {
       $this->addFlash('hasErrors', true);
       $this->addFlash('error', $message);
-      return $this->redirectToRoute($routeName);
+      return $this->redirectToRoute($routeName,$parameters);
     }
 
   }

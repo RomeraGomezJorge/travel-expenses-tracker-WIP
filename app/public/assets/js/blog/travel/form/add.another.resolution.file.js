@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.add-another-collection-widget').click(function (e) {
+    $('.add-another-resolution-file-collection-widget').click(function (e) {
         e.preventDefault();
         var list = jQuery(jQuery(this).attr('data-list-selector'));
         // Try to find the counter of the list or use the length of the list
@@ -23,30 +23,16 @@ $(document).ready(function () {
         newElem.appendTo(list);
 
         //Add some styles
-        newElem.find('[id^="travel_travellersNames_"]').addClass('row col-12').find('.form-group').addClass('mr-2 col-4');
+        newElem.find('[id^="travel_resolution_file"]').parent().addClass('row');
 
         //Add remove button
-        newElem.find('[id^="travel_travellersNames_"]').append(
-            '<div class="col-2">'+
-            '  <button  type="button" class="remove_button btn btn-danger btn-border font-weight-bold mt-4">' +
+        newElem.find('[id^="travel_resolution_file"]').parent().append(
+            '<span class="col-2">'+
+            '  <button  type="button" class="remove_button btn btn-sm btn-danger btn-border font-weight-bold mb-2">' +
             '     <i class="fas fa-times-circle "></i> ' +
             '  </button>'+
-            '</div>');
-
-        //Apply select2 in new fields
-        $('select[name*="employee"]').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});
-        $('select[name*="replacement"] ').select2({placeholder: '- ' + Translator.trans('Optional') + ' -'});
-
-        //force focus on the new travellers name
-        counter--;
-        $('#travel_travellersNames_'+counter+'_employee').select2('open');
+            '</span>');
     });
-
-
-    //Once remove button is clicked
-    $('body').on('click', '.remove_button', function (e) {
-        e.preventDefault();
-        $(this).parent().parent().remove();//Remove field html
-    });
+    $('.add-another-resolution-file-collection-widget').click();
 
 });
