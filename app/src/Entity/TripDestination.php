@@ -34,9 +34,9 @@
     private $name;
     
     /**
-     * @var \LocationCosts
+     * @var LocationCosts
      *
-     * @ORM\ManyToOne(targetEntity="LocationCosts")
+     * @ORM\ManyToOne(targetEntity="LocationCosts", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="location_costs", referencedColumnName="id")
      * })
