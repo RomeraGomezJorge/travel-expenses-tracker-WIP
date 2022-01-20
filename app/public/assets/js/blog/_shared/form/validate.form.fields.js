@@ -29,7 +29,8 @@ $(document).ready(function () {
 
         },
         highlight: function (element) {
-            $(element).closest('.form-group, .form-check').removeClass('has-success').addClass('has-error');
+
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
         },
         success: function (element) {
             $(element).closest('.form-group, .form-check').removeClass('has-error').addClass('has-success');
@@ -37,7 +38,14 @@ $(document).ready(function () {
         errorPlacement: function (error, element) {
 
             if ($(element).hasClass('select2-hidden-accessible')){
-                error.insertAfter($(element).parent().find('span.select2'))}
+                /* in case select2 is used  */
+                error.insertAfter($(element).parent().find('span.select2'));
+
+            }else if($(element).is(':radio')){
+                error.insertAfter($(element).closest('.form-group > :last-child'));
+            }else{
+                error.insertAfter(element);
+            }
         }
     });
 
