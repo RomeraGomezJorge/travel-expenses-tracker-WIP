@@ -14,6 +14,13 @@ services:
       - "${MYSQL_PORT}:3306"
     volumes:
       - ./docker/database/data:/var/lib/mysql
+      - ./docker/database/dump:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    networks:
+      travel-expenses-tracker-network:
+        aliases:
+          - database_host
 
   php-fpm:
     container_name: php-fpm
@@ -23,7 +30,8 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
-      - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}?serverVersion=5.7
+#      - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}?serverVersion=5.7
+      - DB_HOST=database_host
       - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE}
       - PHP_XDEBUG_CLIENT_PORT=${PHP_XDEBUG_CLIENT_PORT}
       - PHP_XDEBUG_CLIENT_HOST=${PHP_XDEBUG_CLIENT_HOST}
@@ -35,6 +43,11 @@ services:
       - "host.docker.internal:host-gateway"
     depends_on:
       - database
+    networks:
+      travel-expenses-tracker-network:
+        aliases:
+        - php-fpm_host
+
 
   nginx:
     container_name: nginx
@@ -48,6 +61,10 @@ services:
       - ./docker/logs:/var/log
     depends_on:
       - php-fpm
+    networks:
+      travel-expenses-tracker-network:
+        aliases:
+        - nginx_host
 
   phpmyadmin:
     container_name: phpmyadmin
@@ -59,5 +76,16 @@ services:
     ports:
       - "${PHPMYADMIN_PORT}:80"
     restart: always
+    networks:
+      travel-expenses-tracker-network:
+        aliases:
+        - phpmyadmin_host
+
+networks:
+  travel-expenses-tracker-network:
+    name: travel-expenses-tracker
+    driver: bridge
+    ipam:
+      driver: default
 
 
