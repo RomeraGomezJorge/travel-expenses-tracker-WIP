@@ -14,6 +14,9 @@ services:
       - "${MYSQL_PORT}:3306"
     volumes:
       - ./docker/database/data:/var/lib/mysql
+      - ./docker/database/dump:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
 
   php-fpm:
     container_name: php-fpm
