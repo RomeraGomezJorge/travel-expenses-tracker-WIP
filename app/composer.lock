@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1bee060a5972de4dce2c2bffe8bb961",
+    "content-hash": "b1f6af8c8b180ad92e027a9c3a633bb6",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1747,6 +1747,62 @@
                 "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v5.8.0"
             },
             "time": "2021-10-30T08:27:46+00:00"
+        },
+        {
+            "name": "lambdish/phunctional",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lambdish/phunctional.git",
+                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lambdish/phunctional/zipball/ed3482e7da134d886789abb33c6df22a5d2f271c",
+                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.16",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/_bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eloi Poch"
+                },
+                {
+                    "name": "Jorge Ávila"
+                },
+                {
+                    "name": "Rafa Gómez"
+                }
+            ],
+            "description": "λ PHP functional library",
+            "keywords": [
+                "functional",
+                "generator",
+                "lambda",
+                "library",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/Lambdish/phunctional/issues",
+                "source": "https://github.com/Lambdish/phunctional/tree/v2.1.0"
+            },
+            "time": "2020-09-18T07:22:08+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -7952,6 +8008,61 @@
     ],
     "packages-dev": [
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "squizlabs/php_codesniffer": "^2.9.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "support": {
+                "issues": "https://github.com/fzaninotto/Faker/issues",
+                "source": "https://github.com/fzaninotto/Faker/tree/v1.9.2"
+            },
+            "abandoned": true,
+            "time": "2020-12-11T09:56:16+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.10.2",
             "source": {
@@ -10228,7 +10339,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
