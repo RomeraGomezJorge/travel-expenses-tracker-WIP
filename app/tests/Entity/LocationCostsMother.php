@@ -21,7 +21,8 @@ class LocationCostsMother
 
     public static function random(): LocationCosts
     {
-        return self::create( WordMother::random(),IntegerMother::lessThan(100000));
+        return self::create( WordMother::random().' '.WordMother::random(),
+            IntegerMother::lessThan(100000));
     }
     
 }
