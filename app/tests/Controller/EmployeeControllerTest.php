@@ -13,7 +13,6 @@
 	{
 		const LIST_ITEMS_PATH = '/backoffice/employee/list';
 		const CREATE_ITEM_PATH = '/backoffice/employee/new';
-		const EDIT_ITEM_PATH = '/backoffice/employee//edit';
 		private KernelBrowser $client;
 		private Employee $employee;
 		
@@ -58,8 +57,6 @@
                 'employee[identityCard]' => IntegerMother::lessThan(99999999)
 			]);
 
-			var_dump($this->client->getResponse()->getContent());
-			
 			$this->shouldPageRedirectsTo($this->client, self::LIST_ITEMS_PATH);
 		}
 		

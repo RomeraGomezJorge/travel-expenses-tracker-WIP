@@ -14,8 +14,6 @@
 		const LIST_ITEMS_PATH = '/backoffice/location-costs/list';
 		const CREATE_ITEM_PATH = '/backoffice/location-costs/new';
 		const EDIT_ITEM_PATH = '/backoffice/location-costs//edit';
-		const LABEL_TO_CREATE_ITEMS = 'Crear Provincia';
-		const LABEL_TO_UPDATE_ITEMS = 'Actualizar Provincia';
 		private KernelBrowser $client;
 		private LocationCosts $locationCosts;
 		

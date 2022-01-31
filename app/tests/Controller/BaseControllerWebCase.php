@@ -21,10 +21,10 @@
 		protected function tearDown(): void
 		{
 			$mySqlDatabaseCleaner = new MySqlDatabaseCleaner();
-			
+
 			$mySqlDatabaseCleaner->__invoke($this->service(EntityManager::class));
 			
-			parent::setUp();
+			parent::tearDown();
 		}
 		
 		/** @return mixed */
