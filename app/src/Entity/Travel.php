@@ -5,7 +5,7 @@
   use Doctrine\Common\Collections\ArrayCollection;
   use Doctrine\Common\Collections\Collection;
   use Doctrine\ORM\Mapping as ORM;
-      use Symfony\Component\Validator\Constraints as Assert;
+  use Symfony\Component\Validator\Constraints as Assert;
   
   /**
    * Travel
@@ -64,15 +64,15 @@
     private $resolution;
     
     /**
-     * @ORM\OneToMany(targetEntity="TravellersName", mappedBy="travel",cascade={"all"})
+     * @ORM\OneToMany(targetEntity="TravellersName", mappedBy="travel", cascade={"persist","remove"})
      */
     private $travellersNames;
     
     /**
-     * @ORM\ManyToMany(targetEntity="TripDestination", inversedBy="travels",
-     *   cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="TripDestination", inversedBy="travels", cascade={"persist"})
      * @ORM\JoinTable(name="travel_destination",
-     *      joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")}, inverseJoinColumns={@ORM\JoinColumn(name="trip_destination_id", referencedColumnName="id", onDelete="CASCADE")}
+     *                joinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")},
+     *                inverseJoinColumns={@ORM\JoinColumn(name="trip_destination_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      * @Assert\NotBlank()
      */
@@ -120,16 +120,15 @@
     }
     
     public function addTravellersName(TravellersName $travellersName) {
-      if (!$this->travellersNames->contains($travellersName)) {
-        $travellersName->setTravel($this);
-        $this->travellersNames[] = $travellersName;
-      }
-      return $this;
+	    if (!$this->travellersNames->contains($travellersName)) {
+		    $travellersName->setTravel($this);
+		    $this->travellersNames->add($travellersName);
+	    }
     }
     
     public function removeTravellersName(TravellersName $travellersName): self {
       if ($this->travellersNames->contains($travellersName)) {
-        $this->travellersNames->removeElement($travellersName);
+	      $this->travellersNames->removeElement($travellersName);
       }
       
       return $this;
@@ -188,3 +187,4 @@
     }
     
   }
+

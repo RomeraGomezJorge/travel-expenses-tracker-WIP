@@ -27,9 +27,9 @@
     /**
      * @var \Employee
      *
-     * @ORM\ManyToOne(targetEntity="Employee")
+     * @ORM\ManyToOne(targetEntity="Employee",cascade={"all"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="employee", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="employee", referencedColumnName="id", nullable="true", onDelete="SET NULL")
      * })
      */
     private $employee;
@@ -39,13 +39,13 @@
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="replacement", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="replacement", referencedColumnName="id", nullable="true", onDelete="SET NULL")
      * })
      */
     private $replacement;
     
     /**
-     * @var \Travel
+     * @var Travel
      *
      * @ORM\ManyToOne(targetEntity="Travel")
      * @ORM\JoinColumns({

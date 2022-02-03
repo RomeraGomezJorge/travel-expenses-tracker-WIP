@@ -36,15 +36,19 @@
     /**
      * @var LocationCosts
      *
-     * @ORM\ManyToOne(targetEntity="LocationCosts", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="LocationCosts", cascade={"persist"},))
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="location_costs", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="location_costs", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      * })
      */
     private $locationCosts;
   
     /**
      * @ORM\ManyToMany(targetEntity="Travel", mappedBy="tripDestinations")
+     * @ORM\JoinTable(name="travel_destination",
+     *                joinColumns={@ORM\JoinColumn(name="trip_destination_id", referencedColumnName="id", onDelete="CASCADE")},
+     *                inverseJoinColumns={@ORM\JoinColumn(name="travel_id", referencedColumnName="id", onDelete="CASCADE")}
+     *      )
      */
     private $travels;
   

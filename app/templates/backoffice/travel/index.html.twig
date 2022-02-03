@@ -70,8 +70,8 @@
                 <td class="d-none d-sm-table-cell">
                     <ul class="row">
                         {% for travellerNames in travel.travellersNames %}
-                            <li class="col-6 mt-2 mb-2">{{ travellerNames.employee.fullname }}</li>
-                            <li class="col-6 mt-2 mb-2">{{ travellerNames.replacementFullname }}</li>
+                            <li class="col-6 mt-2 mb-2">{{ travellerNames.employee is not null? travellerNames.employee.fullname:'N/A' }}</li>
+                            <li class="col-6 mt-2 mb-2">{{ travellerNames.replacement is not null? travellerNames.replacement.fullname:'N/A'  }}</li>
                         {% endfor %}
                     </ul>
                 </td>

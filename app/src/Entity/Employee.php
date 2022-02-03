@@ -91,7 +91,7 @@
       return $this->surname . ', ' . $this->name . ' - ' . $this->identityCard;
     }
   
-    public function getFullname():string {
+    public function getFullname(): ?string {
       return $this->surname . ', ' . $this->name;
     }
     

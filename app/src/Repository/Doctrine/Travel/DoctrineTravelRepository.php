@@ -5,6 +5,7 @@
   
   use App\Entity\Resolution;
   use App\Entity\Travel;
+  use App\Entity\TravellersName;
   use App\Repository\Doctrine\DoctrineRepository;
   use App\Repository\Doctrine\Travel\Filter\Filter;
   use App\Repository\TravelRepository;
@@ -86,6 +87,10 @@
       return $this->paginator()->paginate($qb, $page, $size);
     }
     
+    public function findById(int $id): Travel{
+    	return $this->repository(self::ENTITY_CLASS)->findOneBy(['id'=>$id]);
+    }
+    
     public function save(Travel $employee): void {
       $this->persist($employee);
     }
@@ -100,6 +105,10 @@
       
       $this->remove($resolution);
       
+    }
+  
+    public function removeOldReferenceToTravellersNames(TravellersName $travellersName): void {
+	    $this->remove($travellersName);
     }
     
   }
