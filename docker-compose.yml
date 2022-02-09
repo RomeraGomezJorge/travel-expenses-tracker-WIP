@@ -30,7 +30,7 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
-#      - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}?serverVersion=5.7
+      - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}?serverVersion=5.7
       - DB_HOST=database_host
       - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE}
       - PHP_XDEBUG_CLIENT_PORT=${PHP_XDEBUG_CLIENT_PORT}
@@ -68,7 +68,7 @@ services:
 
   phpmyadmin:
     container_name: phpmyadmin
-    image: phpmyadmin
+    image: phpmyadmin:5.1
     environment:
       - PMA_HOST=database
       - PMA_USER=root
@@ -83,7 +83,6 @@ services:
 
 networks:
   travel-expenses-tracker-network:
-    name: travel-expenses-tracker
     driver: bridge
     ipam:
       driver: default
