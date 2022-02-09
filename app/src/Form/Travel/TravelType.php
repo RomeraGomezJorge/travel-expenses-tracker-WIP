@@ -62,11 +62,13 @@
 					'required' => true,
 					'label' => 'Departure Date',
 					'empty_data' => '',
+          'attr' => ['max' => date('Y-m-d')],
 				])
 				->add('arrivalDate', DateType::class, [
 					'widget' => 'single_text',
 					'required' => true,
 					'label' => 'Arrival Date',
+          'attr' => ['max' => date('Y-m-d')],
 				])
 				->add('resolution', ResolutionType::class, [
 					'label' => false

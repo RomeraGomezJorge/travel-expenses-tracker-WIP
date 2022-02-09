@@ -36,7 +36,8 @@
           'required' => FALSE,
           'attr' => [
             'placeholder' => '- Optional -',
-            'maxlength' => '8'
+            'maxlength' => '8',
+            'minlength' => '8'
           ],
           'label' => 'Identity Card',
         ])

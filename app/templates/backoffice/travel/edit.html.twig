@@ -16,6 +16,7 @@
     <script src="{{ asset('assets/js/blog/_shared/list/pass.data.to.delete.confirmation.modal.js') }}"></script>
     <script>
         $(document).ready(function () {
+            $('#travel_tripDestinations').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'})
             $('select[name*="employee"]').select2({ placeholder: '- ' + Translator.trans('Required') + ' -'});
             $('select[name*="replacement"] ').select2({placeholder: '- ' + Translator.trans('Optional') + ' -'});
             $('[name="travel[departureDate]"]').on('focusout',function () {
